@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2022-01-13T13:35:26.288Z</updated>
+  <updated>2022-01-13T13:37:35.669Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>【学习记录】关于原博客向新电脑迁移的步骤</title>
-    <link href="http://yoursite.com/2022/01/12/Migration_Blog/"/>
-    <id>http://yoursite.com/2022/01/12/Migration_Blog/</id>
-    <published>2022-01-12T09:58:04.000Z</published>
-    <updated>2022-01-13T13:35:26.288Z</updated>
+    <link href="http://yoursite.com/2022/01/13/Migration_Blog/"/>
+    <id>http://yoursite.com/2022/01/13/Migration_Blog/</id>
+    <published>2022-01-13T13:37:04.000Z</published>
+    <updated>2022-01-13T13:37:35.669Z</updated>
     
     <content type="html"><![CDATA[<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>没想到刚开始更新Blog没几天就遇到了需要向新电脑迁移的事情，索性记录下来，由于没怎么接触过前端，个人网站搭建的过程始终让我感到新奇，每天感觉都是在接触新的知识。一开始想要迁移的时候还挺迷茫的，感觉这个过程肯定会有很多坑，没想到最后以外的简单顺利。</p><span id="more"></span><h2 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h2><p>首先，新电脑肯定是需要安装好<code>nodejs</code>和<code>git</code>的,这是大的前提。</p><h2 id="文件的备份"><a href="#文件的备份" class="headerlink" title="文件的备份"></a>文件的备份</h2><p>文件的备份是个问题，究竟哪些文件是必要的哪些是可以舍弃掉的，一开始我的想法是只要带走博客的md文件就好了，大不了重新发布，然后就意识到这是新做一个网站了，那么把<code>_config.yml</code>文件带走呢？似乎也不够，我们还需要吧<code>themes</code>文件也拷贝过去。那么干脆将整个Blog根目录全部拷贝，但是这样会不会产生冲突？最后参考<a href="https://www.cnblogs.com/iHeling/p/14095937.html">如何迁移hexo博客到新电脑</a>这篇博客，确定了最终的文件。  </p><ul><li>_config.yml</li><li>themes</li><li>source</li><li>scaffolds</li><li>package.json</li><li>gitignore<br>这些文件都有其作用，文章作者如此描述：  <blockquote><p>从之前的博客文件夹中选择必须要拷贝的文件，备份起来。首先是之前自己修改的文件，像配置文件<code>_config.yml</code>,<code>theme</code>文件夹，<code>source</code>文件夹自己写的原始文件这些都是必须要拷贝走的。除此之外还有<code>scaffolds</code>文件夹(文件的模板)，<code>package.json</code>(使用哪些包)，<code>.gitignore</code>(提交忽略哪些文件夹)  </p></blockquote></li></ul><h2 id="正式迁移"><a href="#正式迁移" class="headerlink" title="正式迁移"></a>正式迁移</h2><p>以上准备好之后便开始迁移了，全局安装<code>hexo</code>是很有必要的。  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure><p>然后我们新建一个博客文件夹<br>创建完成之后将我们备份来的文件放进文件夹内，<strong>之后不需要执行<code>hexo init</code>，直接<code>hexo clean&amp;hexo g&amp;hexo s</code>即可。</strong><br>接下来的步骤就与一开始搭建网站时一样了，为了push到github上去，我们需要获取ssh：<br>1.在博客文件夹中打开git bash，然后敲上  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br></pre></td></tr></table></figure><p>2.创建SSH,密码、路径之类的不用管，一直回车就好</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure><p>3.这个时候它会告诉你已经生成了<code>.ssh</code>的文件夹。在你的电脑中找到这个文件夹。<br>ssh，简单来讲，就是一个秘钥，其中，<code>id_rsa</code>是私人秘钥，<code>id_rsa.pub</code>是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。<br>而后在GitHub的setting中，<br>![)5$)CP15JB{4YCX1GI`FV28.png](<a href="http://tva1.sinaimg.cn/mw690/008ruEzYly1gycdgqj3c3j30660eggmo.jpg">http://tva1.sinaimg.cn/mw690/008ruEzYly1gycdgqj3c3j30660eggmo.jpg</a>)<br>找到SSH and GPC keys的设置选项，<br><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gycdetdr8sj30as0a2dha.jpg" alt="ILPQ{$L%7N1)17TIRPMZ86N.png"><br>点击New SSH key<br>把你的id_rsa.pub里面的信息复制进去,title随便填写。  </p><h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>直接发布自己的网站，就完成了个人博客的迁移。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -56,9 +56,9 @@
     <category term="单片机设计" scheme="http://yoursite.com/categories/IT/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/"/>
     
     
-    <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
-    
     <category term="单片机设计" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/"/>
+    
+    <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
   </entry>
   
@@ -81,9 +81,9 @@
     <category term="杂项" scheme="http://yoursite.com/categories/IT/%E6%9D%82%E9%A1%B9/"/>
     
     
-    <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
     <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+    
+    <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
