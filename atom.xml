@@ -63,6 +63,27 @@
   </entry>
   
   <entry>
+    <title>头图测试</title>
+    <link href="http://yoursite.com/2022/01/12/test/"/>
+    <id>http://yoursite.com/2022/01/12/test/</id>
+    <published>2022-01-12T09:58:04.000Z</published>
+    <updated>2022-01-13T15:59:31.437Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="嗨！"><a href="#嗨！" class="headerlink" title="嗨！"></a>嗨！</h2><p><img src="http://tva1.sinaimg.cn/large/008ruEzYly1gychkynlndj30xc05pk1x.jpg" alt="Head" title="Head"></p><span id="more"></span>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;嗨！&quot;&gt;&lt;a href=&quot;#嗨！&quot; class=&quot;headerlink&quot; title=&quot;嗨！&quot;&gt;&lt;/a&gt;嗨！&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://tva1.sinaimg.cn/large/008ruEzYly1gychkynlndj30xc05pk1x.jpg&quot; alt=&quot;Head&quot; title=&quot;Head&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="杂项" scheme="http://yoursite.com/categories/%E6%9D%82%E9%A1%B9/"/>
+    
+    
+    <category term="杂项" scheme="http://yoursite.com/tags/%E6%9D%82%E9%A1%B9/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【学习记录】MarkDown语法的学习与整理</title>
     <link href="http://yoursite.com/2022/01/12/MaikdownEdit/"/>
     <id>http://yoursite.com/2022/01/12/MaikdownEdit/</id>
