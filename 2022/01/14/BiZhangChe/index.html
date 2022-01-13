@@ -6,22 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>头图测试 | isNineSun&#39;s Blog</title>
+  <title>基于Arduino的智能避障小车的设计 | isNineSun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="嗨！">
+  <meta name="description" content="摘要这是一个小巧简单的避障车的设计，也算是Arduino中比较火的项目了，试着学习了一下，通过项目来更深入的理解和应用Arduino。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="头图测试">
-<meta property="og:url" content="http://yoursite.com/2022/01/12/test/index.html">
+<meta property="og:title" content="基于Arduino的智能避障小车的设计">
+<meta property="og:url" content="http://yoursite.com/2022/01/14/BiZhangChe/index.html">
 <meta property="og:site_name" content="isNineSun&#39;s Blog">
-<meta property="og:description" content="嗨！">
+<meta property="og:description" content="摘要这是一个小巧简单的避障车的设计，也算是Arduino中比较火的项目了，试着学习了一下，通过项目来更深入的理解和应用Arduino。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gychkynlndj30xc05pk1x.jpg">
-<meta property="article:published_time" content="2022-01-12T09:58:04.000Z">
-<meta property="article:modified_time" content="2022-01-13T15:59:31.437Z">
+<meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gycixlm8n3j30ep0gfdog.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gycjki1pbaj33401qohdu.jpg">
+<meta property="article:published_time" content="2022-01-13T16:00:09.000Z">
+<meta property="article:modified_time" content="2022-01-13T17:07:42.258Z">
 <meta property="article:author" content="NineSun">
-<meta property="article:tag" content="杂项">
+<meta property="article:tag" content="单片机设计">
+<meta property="article:tag" content="IT">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gychkynlndj30xc05pk1x.jpg">
+<meta name="twitter:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gycixlm8n3j30ep0gfdog.jpg">
   
     <link rel="alternative" href="/atom.xml" title="isNineSun&#39;s Blog" type="application/atom+xml">
   
@@ -188,28 +190,64 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-test" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-BiZhangChe" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      头图测试
+      基于Arduino的智能避障小车的设计
     </h1>
   
 
         
-        <a href="/2022/01/12/test/" class="archive-article-date">
-  	<time datetime="2022-01-12T09:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-12</time>
+        <a href="/2022/01/14/BiZhangChe/" class="archive-article-date">
+  	<time datetime="2022-01-13T16:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="嗨！"><a href="#嗨！" class="headerlink" title="嗨！"></a>嗨！</h2><p><img src="http://tva1.sinaimg.cn/large/008ruEzYly1gychkynlndj30xc05pk1x.jpg" alt="Head" title="Head"></p>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>这是一个小巧简单的避障车的设计，也算是Arduino中比较火的项目了，试着学习了一下，通过项目来更深入的理解和应用Arduino。</p>
 <span id="more"></span>
+
+<hr>
+<h2 id="一、原件清单"><a href="#一、原件清单" class="headerlink" title="一、原件清单"></a>一、原件清单</h2><ul>
+<li>Arduino Uno开发板</li>
+<li>L293D </li>
+<li>轮子 (4x)</li>
+<li>直流电机 (4x) </li>
+<li>伺服电机sg90 </li>
+<li>超声波传感器 </li>
+<li>18650 锂电池 (2x) </li>
+<li>18650 插针式电池盒子</li>
+<li>跳线</li>
+<li>亚克力板</li>
+<li>三脚拨动开关   </li>
+</ul>
+<hr>
+<h2 id="二、硬件连接"><a href="#二、硬件连接" class="headerlink" title="二、硬件连接"></a>二、硬件连接</h2><ol>
+<li><p>L293D直流电机驱动模块与Arduino兼容，模块的0~13、gnd、以及ARef引脚直接连接对应Arduino的引脚，另一侧同样对应连接。  </p>
+</li>
+<li><p>图中标记为L293D的四个H桥，可分别连接四个直流电机。<br><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gycixlm8n3j30ep0gfdog.jpg" alt="L293D">  </p>
+</li>
+<li><p>超声波传感器的Vcc连接L293D的+5v，Gnd连接L293D的Gnd，Trig连A0，Echo连接A1。  </p>
+</li>
+<li><p>伺服电机直接连接L293D板子的伺服电机端口。   </p>
+</li>
+<li><p>两节18650锂电池串联接入L293D的外部供电。  </p>
+</li>
+</ol>
+<h2 id="三、程序代码"><a href="#三、程序代码" class="headerlink" title="三、程序代码"></a>三、程序代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;AFMotor.h&gt;  </span><br><span class="line">#include &lt;NewPing.h&gt;</span><br><span class="line">#include &lt;Servo.h&gt; </span><br><span class="line"></span><br><span class="line">#define TRIG_PIN A0 </span><br><span class="line">#define ECHO_PIN A1 </span><br><span class="line">#define MAX_DISTANCE 200 </span><br><span class="line">#define MAX_SPEED 190 // sets speed of DC  motors</span><br><span class="line">#define MAX_SPEED_OFFSET 20</span><br><span class="line"></span><br><span class="line">NewPing sonar(TRIG_PIN, ECHO_PIN, MAX_DISTANCE); </span><br><span class="line"></span><br><span class="line">AF_DCMotor motor1(1, MOTOR12_1KHZ); </span><br><span class="line">AF_DCMotor motor2(2, MOTOR12_1KHZ);</span><br><span class="line">AF_DCMotor motor3(3, MOTOR34_1KHZ);</span><br><span class="line">AF_DCMotor motor4(4, MOTOR34_1KHZ);</span><br><span class="line">Servo myservo;   </span><br><span class="line"></span><br><span class="line">boolean goesForward=false;</span><br><span class="line">int distance = 100;</span><br><span class="line">int speedSet = 0;</span><br><span class="line"></span><br><span class="line">void setup() &#123;</span><br><span class="line"></span><br><span class="line">  myservo.attach(10);  </span><br><span class="line">  myservo.write(180); </span><br><span class="line">  delay(2000);</span><br><span class="line">  distance = readPing();</span><br><span class="line">  delay(100);</span><br><span class="line">  distance = readPing();</span><br><span class="line">  delay(100);</span><br><span class="line">  distance = readPing();</span><br><span class="line">  delay(100);</span><br><span class="line">  distance = readPing();</span><br><span class="line">  delay(100);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void loop() &#123;</span><br><span class="line"> int distanceR = 0;</span><br><span class="line"> int distanceL =  0;</span><br><span class="line"> delay(40);</span><br><span class="line"> </span><br><span class="line"> if(distance&lt;=15)</span><br><span class="line"> &#123;</span><br><span class="line">  moveStop();</span><br><span class="line">  delay(100);</span><br><span class="line">  moveBackward();</span><br><span class="line">  delay(300);</span><br><span class="line">  moveStop();</span><br><span class="line">  delay(200);</span><br><span class="line">  distanceR = lookRight();</span><br><span class="line">  delay(200);</span><br><span class="line">  distanceL = lookLeft();</span><br><span class="line">  delay(200);</span><br><span class="line"></span><br><span class="line">  if(distanceR&gt;=distanceL)</span><br><span class="line">  &#123;</span><br><span class="line">    turnRight();</span><br><span class="line">    moveStop();</span><br><span class="line">  &#125;else</span><br><span class="line">  &#123;</span><br><span class="line">    turnLeft();</span><br><span class="line">    moveStop();</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;else</span><br><span class="line"> &#123;</span><br><span class="line">  moveForward();</span><br><span class="line"> &#125;</span><br><span class="line"> distance = readPing();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int lookRight()</span><br><span class="line">&#123;</span><br><span class="line">    myservo.write(50); </span><br><span class="line">    delay(500);</span><br><span class="line">    int distance = readPing();</span><br><span class="line">    delay(100);</span><br><span class="line">    myservo.write(115); </span><br><span class="line">    return distance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int lookLeft()</span><br><span class="line">&#123;</span><br><span class="line">    myservo.write(170); </span><br><span class="line">    delay(500);</span><br><span class="line">    int distance = readPing();</span><br><span class="line">    delay(100);</span><br><span class="line">    myservo.write(115); </span><br><span class="line">    return distance;</span><br><span class="line">    delay(100);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int readPing() &#123; </span><br><span class="line">  delay(70);</span><br><span class="line">  int cm = sonar.ping_cm();</span><br><span class="line">  if(cm==0)</span><br><span class="line">  &#123;</span><br><span class="line">    cm = 250;</span><br><span class="line">  &#125;</span><br><span class="line">  return cm;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void moveStop() &#123;</span><br><span class="line">  motor1.run(RELEASE); </span><br><span class="line">  motor2.run(RELEASE);</span><br><span class="line">  motor3.run(RELEASE);</span><br><span class="line">  motor4.run(RELEASE);</span><br><span class="line">  &#125; </span><br><span class="line">  </span><br><span class="line">void moveForward() &#123;</span><br><span class="line"></span><br><span class="line"> if(!goesForward)</span><br><span class="line">  &#123;</span><br><span class="line">    goesForward=true;</span><br><span class="line">    motor1.run(FORWARD);      </span><br><span class="line">    motor2.run(FORWARD);</span><br><span class="line">    motor3.run(FORWARD); </span><br><span class="line">    motor4.run(FORWARD);     </span><br><span class="line">   for (speedSet = 0; speedSet &lt; MAX_SPEED; speedSet +=2) // slowly bring the speed up to avoid loading down the batteries too quickly</span><br><span class="line">   &#123;</span><br><span class="line">    motor1.setSpeed(speedSet);</span><br><span class="line">    motor2.setSpeed(speedSet);</span><br><span class="line">    motor3.setSpeed(speedSet);</span><br><span class="line">    motor4.setSpeed(speedSet);</span><br><span class="line">    delay(5);</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void moveBackward() &#123;</span><br><span class="line">    goesForward=false;</span><br><span class="line">    motor1.run(BACKWARD);      </span><br><span class="line">    motor2.run(BACKWARD);</span><br><span class="line">    motor3.run(BACKWARD);</span><br><span class="line">    motor4.run(BACKWARD);  </span><br><span class="line">  for (speedSet = 0; speedSet &lt; MAX_SPEED; speedSet +=2) // slowly bring the speed up to avoid loading down the batteries too quickly</span><br><span class="line">  &#123;</span><br><span class="line">    motor1.setSpeed(speedSet);</span><br><span class="line">    motor2.setSpeed(speedSet);</span><br><span class="line">    motor3.setSpeed(speedSet);</span><br><span class="line">    motor4.setSpeed(speedSet);</span><br><span class="line">    delay(5);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">void turnRight() &#123;</span><br><span class="line">  motor1.run(FORWARD);</span><br><span class="line">  motor2.run(FORWARD);</span><br><span class="line">  motor3.run(BACKWARD);</span><br><span class="line">  motor4.run(BACKWARD);     </span><br><span class="line">  delay(500);</span><br><span class="line">  motor1.run(FORWARD);      </span><br><span class="line">  motor2.run(FORWARD);</span><br><span class="line">  motor3.run(FORWARD);</span><br><span class="line">  motor4.run(FORWARD);      </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">void turnLeft() &#123;</span><br><span class="line">  motor1.run(BACKWARD);     </span><br><span class="line">  motor2.run(BACKWARD);  </span><br><span class="line">  motor3.run(FORWARD);</span><br><span class="line">  motor4.run(FORWARD);   </span><br><span class="line">  delay(500);</span><br><span class="line">  motor1.run(FORWARD);     </span><br><span class="line">  motor2.run(FORWARD);</span><br><span class="line">  motor3.run(FORWARD);</span><br><span class="line">  motor4.run(FORWARD);</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<h2 id="四、注意事项"><a href="#四、注意事项" class="headerlink" title="四、注意事项"></a>四、注意事项</h2><p><strong>1. 使用18650作外部供电时，切记不要连反了线，否则会有烧芯片的风险。</strong><br><strong>2. 伺服电机应该选择限制旋转180°的sg90，而不能选择mg90一类的360舵机，原因是后者只能调正反转和速度，而不能像前者一样旋转固定的角度。</strong><br><strong>3. Arduino程序烧录时，有三个必要的支持库需要下载，下面是下载链接以及安装方式。</strong>  </p>
+<blockquote>
+<p>AFMotor Library <a target="_blank" rel="noopener" href="https://learn.adafruit.com/adafruit-motor-shield/library-install">https://learn.adafruit.com/adafruit-motor-shield/library-install</a><br>NewPing Library <a target="_blank" rel="noopener" href="https://github.com/livetronic/Arduino-NewPing">https://github.com/livetronic/Arduino-NewPing</a><br>Servo Library <a target="_blank" rel="noopener" href="https://github.com/arduino-libraries/Servo.git">https://github.com/arduino-libraries/Servo.git</a> </p>
+</blockquote>
+<p><strong>点击 sketch（项目） &gt;&gt; Include Library（加载库） &gt;&gt; Add .ZIP File（添加zip.文件），把你下载好的库文件添加进去。</strong></p>
+<h2 id="五、成品展示"><a href="#五、成品展示" class="headerlink" title="五、成品展示"></a>五、成品展示</h2><p><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gycjki1pbaj33401qohdu.jpg" alt="智能车.jpg"></p>
+
       
 
       
@@ -253,7 +291,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">单片机设计</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
         		</li>
       		
 		</ul>
@@ -265,7 +307,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/杂项//" class="article-tag-list-link color3">杂项</a>
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
         		</li>
       		
 		</ul>
@@ -320,7 +366,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/01/12/test/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/01/14/BiZhangChe/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -334,18 +380,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2022/01/12/ExpressageInfo/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          基于stc89c51Rc的扫码取件设计
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/01/12/MaikdownEdit/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【学习记录】MarkDown语法的学习与整理</div>
+    <a href="/2022/01/13/Migration_Blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【学习记录】关于原博客向新电脑迁移的步骤</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -372,7 +409,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%97%A8%EF%BC%81"><span class="toc-number">1.</span> <span class="toc-text">嗨！</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E4%BB%B6%E6%B8%85%E5%8D%95"><span class="toc-number">2.</span> <span class="toc-text">一、原件清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">二、硬件连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">三、程序代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">5.</span> <span class="toc-text">四、注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%88%90%E5%93%81%E5%B1%95%E7%A4%BA"><span class="toc-number">6.</span> <span class="toc-text">五、成品展示</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -492,15 +529,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">all</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
             
             <div class="clearfix"></div>
