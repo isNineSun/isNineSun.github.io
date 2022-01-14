@@ -6,28 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>基于stc89c51Rc的扫码取件设计 | isNineSun&#39;s Blog</title>
+  <title>isNineSun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="摘要一种通过取件码快速获得快递位置的设计。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="基于stc89c51Rc的扫码取件设计">
-<meta property="og:url" content="http://yoursite.com/2022/01/12/ExpressageInfo/index.html">
+  <meta name="description" content="b02e6c43dd03e8361506a9f088402eb2">
+<meta property="og:type" content="website">
+<meta property="og:title" content="isNineSun&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/baidu_verify_code-CrDlwTgAq1.html">
 <meta property="og:site_name" content="isNineSun&#39;s Blog">
-<meta property="og:description" content="摘要一种通过取件码快速获得快递位置的设计。">
+<meta property="og:description" content="b02e6c43dd03e8361506a9f088402eb2">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gyarp1xvj5j30820cpt90.jpg">
-<meta property="og:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gyarp1y4eoj30hq0duaau.jpg">
-<meta property="og:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gyatt2ebp4j30ns0mhtls.jpg">
-<meta property="og:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gyau3ktfyhj30ag0g30tq.jpg">
-<meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gyautmd500j30j60ya0vd.jpg">
-<meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gyauu3cxrhj30tu1hcads.jpg">
-<meta property="article:published_time" content="2022-01-12T09:58:04.000Z">
-<meta property="article:modified_time" content="2022-01-12T06:31:08.000Z">
+<meta property="article:published_time" content="2022-01-14T18:18:47.179Z">
+<meta property="article:modified_time" content="2022-01-14T18:18:29.756Z">
 <meta property="article:author" content="NineSun">
-<meta property="article:tag" content="单片机设计">
-<meta property="article:tag" content="IT">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gyarp1xvj5j30820cpt90.jpg">
   
     <link rel="alternative" href="/atom.xml" title="isNineSun&#39;s Blog" type="application/atom+xml">
   
@@ -194,73 +185,12 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ExpressageInfo" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      基于stc89c51Rc的扫码取件设计
-    </h1>
-  
-
-        
-        <a href="/2022/01/12/ExpressageInfo/" class="archive-article-date">
-  	<time datetime="2022-01-12T09:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-12</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>一种通过取件码快速获得快递位置的设计。</p>
-<span id="more"></span>
-
-<h2 id="一、项目介绍"><a href="#一、项目介绍" class="headerlink" title="一、项目介绍"></a>一、项目介绍</h2><h3 id="1-课题意义"><a href="#1-课题意义" class="headerlink" title="1.课题意义"></a>1.课题意义</h3><p>当今时代，国内信息化步伐逐渐加快，随着互联网和电子商务的迅速发展和普及，网络购物已成为人们生活中不可缺少的一部分。现在快递服务业已发展到一定规模，但是快递服务效率却停滞不前。一个好的物流公司想要在这个社会站稳脚跟，需要的不仅仅是传输速度，更重要的是用合理的方法来加快精简各个步骤所需要花费的时间和精力，而快递网点系统是物流这个大模块中一个重要的子系统。单纯的人工取货费时费力，本设计以取件码为依据来实现快递的货物识别，取快递时出示取件码，扫码之后，对应的货物自动发声或发光提示其所在位置，据此想法，从而设计本系统。</p>
-<h3 id="2-实现要求"><a href="#2-实现要求" class="headerlink" title="2.实现要求"></a>2.实现要求</h3><p>本课题是设计一个基于单片机的快递网点货物识别系统，以扫码模块、基于单片机的货物识别等关键技术为重点研究对象设计系统，研究设计的目标是在快递网点取货时更加方便，让客户在取货时出示取件码，扫码之后，对应的货物自动发声或者发光提示其所在位置，便于客户快速取件成功。同时需要了解系统原理、原理、特点、控制方式、应用情况、工作流程等，实现系统货物识别、声光控制等基本功能要求。</p>
-<hr>
-<h2 id="二、原件清单"><a href="#二、原件清单" class="headerlink" title="二、原件清单"></a>二、原件清单</h2><ul>
-<li>Stc89c52Rc*1  </li>
-<li>单片机最小系统*1  </li>
-<li>QX1100扫码器*1  </li>
-<li>有源蜂鸣器*3  </li>
-<li>LED发光二极管*3  </li>
-<li>1k电阻*12  </li>
-<li>330Ω电阻*3  </li>
-<li>npn三极管*3  </li>
-<li>杜邦线 若干  </li>
-<li>排针 若干  </li>
-</ul>
-<hr>
-<h2 id="三、原理框图"><a href="#三、原理框图" class="headerlink" title="三、原理框图"></a>三、原理框图</h2><p><img src="http://tva1.sinaimg.cn/large/008ruEzYly1gyarp1xvj5j30820cpt90.jpg" alt="快递信息二维码生成软件流程图" title="软件"><br>软件  </p>
-<p><img src="http://tva1.sinaimg.cn/large/008ruEzYly1gyarp1y4eoj30hq0duaau.jpg" alt="快递信息二维码读取硬件流程图" title="硬件"><br>硬件  </p>
-<h2 id="三、电路连接"><a href="#三、电路连接" class="headerlink" title="三、电路连接"></a>三、电路连接</h2><p><img src="http://tva1.sinaimg.cn/large/008ruEzYly1gyatt2ebp4j30ns0mhtls.jpg" alt="protues仿真连接（仅供参考）"><br>图中1、2、3为三个子端设备，即贴在快递上用来声光报警的设备。仿真图仅供连接参考，我本身是在草稿纸上画的线路因此这个仿真只体现大体思路。  </p>
-<p><strong>注意：实际连接时P2口需接1k的上拉电阻来稳压，发光二极管串联330欧姆电阻，三极管基极接1k电阻。</strong> </p>
-<hr>
-<h2 id="四、实物展示"><a href="#四、实物展示" class="headerlink" title="四、实物展示"></a>四、实物展示</h2><h3 id="1-软件展示"><a href="#1-软件展示" class="headerlink" title="1.软件展示"></a>1.软件展示</h3><p><img src="http://tva1.sinaimg.cn/large/008ruEzYly1gyau3ktfyhj30ag0g30tq.jpg" alt="软件界面">  </p>
-<ul>
-<li>在最上方生成二维码。</li>
-<li>中间填入快递货架号，格式为xxx（<em>排、行、个，如：123，代表第一排第二行第三个</em>）。</li>
-<li>点击录入会自动生成二维码并记录进快递列表。</li>
-<li>点击快递列表即可查看存入快递。</li>
-<li>点击“关闭”关闭应用。</li>
-<li>在qq邮箱栏，输入qq邮箱点击发送会将二维码以邮件附件的形式发送给用户。</li>
-<li>最下方是信息提示栏。  </li>
-</ul>
-<h3 id="2-硬件展示"><a href="#2-硬件展示" class="headerlink" title="2.硬件展示"></a>2.硬件展示</h3><p><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gyautmd500j30j60ya0vd.jpg" alt="背面"><br>背面（三个子端）<br><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gyauu3cxrhj30tu1hcads.jpg" alt="正面"><br>正面（扫码器）</p>
-<hr>
-<h2 id="五、程序代码"><a href="#五、程序代码" class="headerlink" title="五、程序代码"></a>五、程序代码</h2><h3 id="1-软件程序"><a href="#1-软件程序" class="headerlink" title="1.软件程序"></a>1.软件程序</h3><p>软件是基于unity进行开发的，之所以不选用VS开发是因为对我个人来说unity的ui设计更加直观明了。两者都是用的C#语言，因此在代码方面实际上差别并不很大。以下贴一下关键代码：<br><strong>(1)QQ邮件发送代码</strong>  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line">using System;</span><br><span class="line">using System.Net;</span><br><span class="line">using System.Net.Mail;</span><br><span class="line">using System.Net.Security;</span><br><span class="line">using System.Security.Cryptography.X509Certificates;</span><br><span class="line">using UnityEngine.UI;</span><br><span class="line">public class Mail : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public GameObject Text_02,send;</span><br><span class="line">    public Vector2 creatPosition;</span><br><span class="line"></span><br><span class="line">    public void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        if (GameObject.Find(&quot;QQMileAdress&quot;).GetComponent&lt;Text&gt;().text.Length &lt;= 14)</span><br><span class="line">        &#123;</span><br><span class="line">            send.GetComponent&lt;Button&gt;().interactable = false;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            send.GetComponent&lt;Button&gt;().interactable = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void SendEmail()</span><br><span class="line">    &#123;</span><br><span class="line">        MailMessage mail = new MailMessage();</span><br><span class="line"></span><br><span class="line">        mail.From = new MailAddress(&quot;xxx@qq.com&quot;);//发件人</span><br><span class="line">        mail.To.Add(GameObject.Find(&quot;QQMileAdress&quot;).GetComponent&lt;Text&gt;().text);//收件人</span><br><span class="line">        mail.Subject = &quot;Test Mail&quot;;//标题</span><br><span class="line">        mail.Body = &quot;This is for Me&quot;;//内容</span><br><span class="line">        mail.Attachments.Add(new Attachment(Application.dataPath + &quot;/&quot; + &quot;QR.png&quot;));//附件</span><br><span class="line"></span><br><span class="line">        SmtpClient smtpServer = new SmtpClient(&quot;smtp.qq.com&quot;);</span><br><span class="line">        smtpServer.Credentials = new System.Net.NetworkCredential(&quot;xxx@qq.com&quot;, &quot;xxxxxxxxxxxxxx&quot;) as ICredentialsByHost;</span><br><span class="line">        //Credentials证书    NetworkCredential网络证书     xxxxxxxxxxxxxx邮箱授权密码！</span><br><span class="line">        smtpServer.EnableSsl = true;</span><br><span class="line">        ServicePointManager.ServerCertificateValidationCallback =</span><br><span class="line">          delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)</span><br><span class="line">          &#123; return true; &#125;;</span><br><span class="line"></span><br><span class="line">        smtpServer.Send(mail);</span><br><span class="line">        Instantiate(Text_02, creatPosition, Quaternion.identity, GameObject.Find(&quot;Canvas&quot;).transform);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-<p><strong>(2)QR码生成</strong>  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.UI;</span><br><span class="line">using ZXing;</span><br><span class="line">using ZXing.QrCode;</span><br><span class="line">using System.IO;</span><br><span class="line"></span><br><span class="line">public class QR_Code : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public string QrCodeStr;</span><br><span class="line">    public List&lt;string&gt; Mylist;</span><br><span class="line">    public GameObject Text, createPosition;</span><br><span class="line">    //在屏幕上显示二维码</span><br><span class="line">    public RawImage image;</span><br><span class="line">    public Text Items;</span><br><span class="line">    //存放二维码</span><br><span class="line">    Texture2D encoded;</span><br><span class="line">    int Nmuber = 0;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        encoded = new Texture2D(256, 256);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        if (Input.GetKeyDown(KeyCode.Return))</span><br><span class="line">        &#123;</span><br><span class="line">            Sign();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    /// 定义方法生成二维码</span><br><span class="line">    private static Color32[] Encode(string textForEncoding, int width, int height)</span><br><span class="line">    &#123;</span><br><span class="line">        var writer = new BarcodeWriter</span><br><span class="line">        &#123;</span><br><span class="line">            Format = BarcodeFormat.QR_CODE,</span><br><span class="line">            Options = new QrCodeEncodingOptions</span><br><span class="line">            &#123;</span><br><span class="line">                Height = height,</span><br><span class="line">                Width = width</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        return writer.Write(textForEncoding);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /// 生成二维码</span><br><span class="line">    public void Btn_CreatQr()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        if (QrCodeStr==null || GameObject.Find(&quot;number&quot;).GetComponent&lt;Text&gt;().text.Length&gt;0)</span><br><span class="line">        &#123;</span><br><span class="line">            QrCodeStr = GameObject.Find(&quot;number&quot;).GetComponent&lt;Text&gt;().text;</span><br><span class="line">            Mylist.Add(QrCodeStr+&quot;\n&quot;);</span><br><span class="line">            //二维码写入图片</span><br><span class="line">            var color32 = Encode(QrCodeStr, encoded.width, encoded.height);</span><br><span class="line">            encoded.SetPixels32(color32);</span><br><span class="line">            encoded.Apply();</span><br><span class="line">            //生成的二维码图片附给RawImage</span><br><span class="line">            image.texture = encoded;</span><br><span class="line">        &#125;</span><br><span class="line">        else </span><br><span class="line">        &#123;</span><br><span class="line">            Instantiate(Text, createPosition.transform.position, Quaternion.identity,transform);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void Sign()</span><br><span class="line">    &#123;</span><br><span class="line">        Btn_CreatQr();</span><br><span class="line">        SaveTextureToFile();</span><br><span class="line">        Nmuber++;</span><br><span class="line">        if (Nmuber &gt;= QrCodeStr.Length)</span><br><span class="line">        &#123;</span><br><span class="line">            Nmuber = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void list()</span><br><span class="line">    &#123;</span><br><span class="line">        Items.text = null;</span><br><span class="line">        foreach (var item in Mylist)</span><br><span class="line">        &#123;</span><br><span class="line">            Items.text += item;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Quit()</span><br><span class="line">    &#123;</span><br><span class="line">        Application.Quit();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void SaveTextureToFile()</span><br><span class="line">    &#123;</span><br><span class="line">        var bytes = encoded.EncodeToPNG();</span><br><span class="line">        File.WriteAllBytes(Application.dataPath + &quot;/&quot; + &quot;QR.png&quot;, bytes);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>(3)52单片机程序</strong>  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;reg52.h&quot;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">typedef unsigned int u16;	//对系统默认数据类型进行重定义</span><br><span class="line">typedef unsigned char u8;</span><br><span class="line">typedef unsigned long u32;</span><br><span class="line"></span><br><span class="line">void delay_10us(u16 ten_us);</span><br><span class="line">void delay_ms(u16 ms);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">unsigned char num[][10]=&#123;&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;&#125;;</span><br><span class="line">u8 led[9]=&#123;0x00,0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80&#125;;</span><br><span class="line">u8 n;</span><br><span class="line">//****************************************************************************************</span><br><span class="line"></span><br><span class="line">void delay_10us(u16 ten_us)</span><br><span class="line">&#123;</span><br><span class="line">	while(ten_us--);	</span><br><span class="line">&#125;</span><br><span class="line">void delay_ms(u16 ms)</span><br><span class="line">&#123;</span><br><span class="line">	u16 i,j;</span><br><span class="line">	for(i=ms;i&gt;0;i--)</span><br><span class="line">		for(j=110;j&gt;0;j--);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//****************************************************************************************</span><br><span class="line">void uart_init(u8 baud)</span><br><span class="line">&#123;</span><br><span class="line">	TMOD|=0X20;	//设置计数器工作方式2</span><br><span class="line">	SCON=0X50;	//设置为工作方式1</span><br><span class="line">	PCON=0X80;	//波特率加倍</span><br><span class="line">	TH1=baud;	//计数器初始值设置</span><br><span class="line">	TL1=baud;</span><br><span class="line">	ES=1;		//打开接收中断</span><br><span class="line">	EA=1;		//打开总中断</span><br><span class="line">	TR1=1;		//打开计数器		</span><br><span class="line">&#125;</span><br><span class="line">void main()</span><br><span class="line">&#123;	</span><br><span class="line">	int r;</span><br><span class="line">	uart_init(0XFA);//波特率为9600</span><br><span class="line">	</span><br><span class="line">	while(1)</span><br><span class="line">	&#123;</span><br><span class="line">		if(n &gt;= &#x27;0&#x27; &amp;&amp; n &lt;= &#x27;9&#x27;)</span><br><span class="line">			r=n-&#x27;0&#x27;;</span><br><span class="line">		  P2=led[r];</span><br><span class="line">		//lcd1602_init();//LCD1602初始化</span><br><span class="line">	  //lcd1602_show_string(0,0,num[r]);//第一行显示</span><br><span class="line">		delay_ms(10);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void uart() interrupt 4 //串口通信中断函数</span><br><span class="line">&#123;</span><br><span class="line">	u8 rec_data;</span><br><span class="line"></span><br><span class="line">	RI = 0;			//清除接收中断标志位</span><br><span class="line">	rec_data=SBUF;	//存储接收到的数据</span><br><span class="line">	n=rec_data;</span><br><span class="line">	SBUF=rec_data;	//将接收到的数据放入到发送寄存器</span><br><span class="line">	while(!TI);		//等待发送数据完成</span><br><span class="line">	TI=0;			//清除发送完成标志位				</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>有一些用来控制ui动画的小代码就不放出来了，大家根据自己的需要去修改就好。 </p>
-<hr>
-<h2 id="六、设备运行结果"><a href="#六、设备运行结果" class="headerlink" title="六、设备运行结果"></a>六、设备运行结果</h2><p>视频我已上传百度云，需要看设备运行的可以下载来看<br>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Evjrf5T2KU6Vl3sgDGIIZQ">百度云</a><br>提取码：k2w6 </p>
-
+        b02e6c43dd03e8361506a9f088402eb2
       
 
       
@@ -299,37 +229,7 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -379,7 +279,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/01/12/ExpressageInfo/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/baidu_verify_code-CrDlwTgAq1.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -391,25 +291,6 @@ var _hmt = _hmt || [];
 </article>
 
   
-<nav id="article-nav">
-  
-    <a href="/2022/01/13/Migration_Blog/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          【学习记录】关于原博客向新电脑迁移的步骤
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/01/12/MaikdownEdit/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【学习记录】MarkDown语法的学习与整理</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -431,7 +312,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">一、项目介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AF%BE%E9%A2%98%E6%84%8F%E4%B9%89"><span class="toc-number">2.1.</span> <span class="toc-text">1.课题意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%9E%E7%8E%B0%E8%A6%81%E6%B1%82"><span class="toc-number">2.2.</span> <span class="toc-text">2.实现要求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8E%9F%E4%BB%B6%E6%B8%85%E5%8D%95"><span class="toc-number">3.</span> <span class="toc-text">二、原件清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8E%9F%E7%90%86%E6%A1%86%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">三、原理框图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%B5%E8%B7%AF%E8%BF%9E%E6%8E%A5"><span class="toc-number">5.</span> <span class="toc-text">三、电路连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E7%89%A9%E5%B1%95%E7%A4%BA"><span class="toc-number">6.</span> <span class="toc-text">四、实物展示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BD%AF%E4%BB%B6%E5%B1%95%E7%A4%BA"><span class="toc-number">6.1.</span> <span class="toc-text">1.软件展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%A1%AC%E4%BB%B6%E5%B1%95%E7%A4%BA"><span class="toc-number">6.2.</span> <span class="toc-text">2.硬件展示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81"><span class="toc-number">7.</span> <span class="toc-text">五、程序代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BD%AF%E4%BB%B6%E7%A8%8B%E5%BA%8F"><span class="toc-number">7.1.</span> <span class="toc-text">1.软件程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%AE%BE%E5%A4%87%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">8.</span> <span class="toc-text">六、设备运行结果</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
@@ -473,7 +354,7 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
