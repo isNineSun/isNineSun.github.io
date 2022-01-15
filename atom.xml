@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2022-01-13T17:07:42.258Z</updated>
+  <updated>2022-01-15T04:56:28.132Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ESP8266的wifi连接模板代码</title>
+    <link href="http://yoursite.com/2022/01/15/ESP8266_template/"/>
+    <id>http://yoursite.com/2022/01/15/ESP8266_template/</id>
+    <published>2022-01-15T04:56:04.000Z</published>
+    <updated>2022-01-15T04:56:28.132Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>这是一个ESP8266连接wifi的模板，几乎连接wifi都会用到这个代码，因此在这里做个记录。</p><span id="more"></span><h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;ESP8266.h&gt;//导入ESP8666的wifi库</span><br><span class="line">const char* ssid=&quot;wifi名称&quot;;</span><br><span class="line">const char* password=&quot;wifi密码&quot;；</span><br><span class="line">void setup()</span><br><span class="line">&#123;</span><br><span class="line">    Serial.begin(115200);</span><br><span class="line">    WiFi.bigin(ssid,password);</span><br><span class="line">    while(WiFi.status()!=WL_CONNEXTED)</span><br><span class="line">    &#123;</span><br><span class="line">        delay(500);</span><br><span class="line">        Serial.print(&quot;.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    Serial.println(&quot;&quot;);</span><br><span class="line">    Serial.println(&quot;WiFi Connected!&quot;);</span><br><span class="line"></span><br><span class="line">    Serial.println(Wifi.localIP());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/////下面是loop函数，以上写在开头和setup函数中.</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h2&gt;&lt;p&gt;这是一个ESP8266连接wifi的模板，几乎连接wifi都会用到这个代码，因此在这里做个记录。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="IT" scheme="http://yoursite.com/categories/IT/"/>
+    
+    <category term="单片机设计" scheme="http://yoursite.com/categories/IT/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/"/>
+    
+    <category term="ESP8266" scheme="http://yoursite.com/categories/IT/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/ESP8266/"/>
+    
+    
+    <category term="ESP8266" scheme="http://yoursite.com/tags/ESP8266/"/>
+    
+    <category term="单片机设计" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/"/>
+    
+    <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+    
+  </entry>
   
   <entry>
     <title>基于Arduino的智能避障小车的设计</title>
