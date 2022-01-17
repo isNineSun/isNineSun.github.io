@@ -16,7 +16,7 @@
 <meta property="og:description" content="摘要这是一个ESP8266连接wifi的模板，几乎连接wifi都会用到这个代码，因此在这里做个记录。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-15T04:56:04.000Z">
-<meta property="article:modified_time" content="2022-01-15T04:56:28.132Z">
+<meta property="article:modified_time" content="2022-01-17T13:35:48.924Z">
 <meta property="article:author" content="NineSun">
 <meta property="article:tag" content="ESP8266">
 <meta property="article:tag" content="单片机设计">
@@ -211,7 +211,7 @@ var _hmt = _hmt || [];
         <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>这是一个ESP8266连接wifi的模板，几乎连接wifi都会用到这个代码，因此在这里做个记录。</p>
 <span id="more"></span>
 
-<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;ESP8266.h&gt;//导入ESP8666的wifi库</span><br><span class="line">const char* ssid=&quot;wifi名称&quot;;</span><br><span class="line">const char* password=&quot;wifi密码&quot;；</span><br><span class="line">void setup()</span><br><span class="line">&#123;</span><br><span class="line">    Serial.begin(115200);</span><br><span class="line">    WiFi.bigin(ssid,password);</span><br><span class="line">    while(WiFi.status()!=WL_CONNEXTED)</span><br><span class="line">    &#123;</span><br><span class="line">        delay(500);</span><br><span class="line">        Serial.print(&quot;.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    Serial.println(&quot;&quot;);</span><br><span class="line">    Serial.println(&quot;WiFi Connected!&quot;);</span><br><span class="line"></span><br><span class="line">    Serial.println(Wifi.localIP());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/////下面是loop函数，以上写在开头和setup函数中.</span><br></pre></td></tr></table></figure>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;ESP8266WiFi.h&gt;        </span><br><span class="line"> </span><br><span class="line">const char* ssid=&quot;taichi-maker&quot;;      </span><br><span class="line">const char* password=&quot;12345678&quot;;         </span><br><span class="line">                                            </span><br><span class="line">void setup() &#123;</span><br><span class="line">  Serial.begin(9600);       </span><br><span class="line">  </span><br><span class="line">  WiFi.begin(ssid, password);                </span><br><span class="line">  Serial.print(&quot;Connecting to &quot;);             </span><br><span class="line">  Serial.print(ssid); </span><br><span class="line">  Serial.println(&quot; ...&quot;);  </span><br><span class="line"></span><br><span class="line">  int i = 0;                                   </span><br><span class="line">  while (WiFi.status() != WL_CONNECTED) &#123;     </span><br><span class="line">    delay(1000);                                         </span><br><span class="line">    Serial.print(i++);</span><br><span class="line">    Serial.print(&#x27; &#x27;);    </span><br><span class="line">  &#125;                                            </span><br><span class="line">                                               </span><br><span class="line">  Serial.println(&quot;&quot;);                        </span><br><span class="line">  Serial.println(&quot;Connection established!&quot;);   </span><br><span class="line">  Serial.print(&quot;IP address:    &quot;);             </span><br><span class="line">  Serial.println(WiFi.localIP());           </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void loop() &#123;                                   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -501,11 +501,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习记录</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
+                <a href="javascript:void(0)" class="js-tag color5">学习记录</a>
               </li>
              
               <li class="article-tag-list-item">
