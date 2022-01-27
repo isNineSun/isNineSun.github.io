@@ -6,24 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>【学习记录】MarkDown语法的学习与整理 | isNineSun&#39;s Blog</title>
+  <title>基于stc89c51Rc的扫码取件设计 | isNineSun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="摘要接触了一小段时间的Markdown文件的编写了，深感他能被众人所推崇的确有其独特之处，因此开一篇博客记录下markdown常用的一些有语法，既是一种整理也是一个加深印象和巩固的过程。感谢菜鸟教程的详细总结，省去了我不少时间，这里只介绍我常用到的，如果需要请点击链接来更全面的学习菜鸟的Markdown教程。">
+  <meta name="description" content="摘要一个简单的出纸系统，esp8266的小实验，主要是深入了解下360舵机的原理，并尝试应用在了项目上，最重要的还是对点灯科技的加深了解，属实是懒人福音了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【学习记录】MarkDown语法的学习与整理">
-<meta property="og:url" content="http://yoursite.com/2022/01/12/MaikdownEdit/index.html">
+<meta property="og:title" content="基于stc89c51Rc的扫码取件设计">
+<meta property="og:url" content="http://yoursite.com/2022/01/27/PaperManager/index.html">
 <meta property="og:site_name" content="isNineSun&#39;s Blog">
-<meta property="og:description" content="摘要接触了一小段时间的Markdown文件的编写了，深感他能被众人所推崇的确有其独特之处，因此开一篇博客记录下markdown常用的一些有语法，既是一种整理也是一个加深印象和巩固的过程。感谢菜鸟教程的详细总结，省去了我不少时间，这里只介绍我常用到的，如果需要请点击链接来更全面的学习菜鸟的Markdown教程。">
+<meta property="og:description" content="摘要一个简单的出纸系统，esp8266的小实验，主要是深入了解下360舵机的原理，并尝试应用在了项目上，最重要的还是对点灯科技的加深了解，属实是懒人福音了。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gyawosia27j30hs0hsmy2.jpg">
-<meta property="og:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gyawosia27j30hs0hsmy2.jpg">
-<meta property="article:published_time" content="2022-01-12T06:36:04.000Z">
-<meta property="article:modified_time" content="2022-01-12T07:17:14.000Z">
+<meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfx1qxhvj30lj0f8q8r.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfyvrd4lj30e30eowf5.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfyvrzeej30p00ei0vq.jpg">
+<meta property="article:published_time" content="2022-01-27T09:58:04.000Z">
+<meta property="article:modified_time" content="2022-01-27T11:17:28.714Z">
 <meta property="article:author" content="NineSun">
+<meta property="article:tag" content="单片机设计">
 <meta property="article:tag" content="IT">
-<meta property="article:tag" content="学习记录">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gyawosia27j30hs0hsmy2.jpg">
+<meta name="twitter:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfx1qxhvj30lj0f8q8r.jpg">
   
     <link rel="alternative" href="/atom.xml" title="isNineSun&#39;s Blog" type="application/atom+xml">
   
@@ -190,64 +191,173 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MaikdownEdit" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-PaperManager" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      【学习记录】MarkDown语法的学习与整理
+      基于stc89c51Rc的扫码取件设计
     </h1>
   
 
         
-        <a href="/2022/01/12/MaikdownEdit/" class="archive-article-date">
-  	<time datetime="2022-01-12T06:36:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-12</time>
+        <a href="/2022/01/27/PaperManager/" class="archive-article-date">
+  	<time datetime="2022-01-27T09:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>接触了一小段时间的Markdown文件的编写了，深感他能被众人所推崇的确有其独特之处，因此开一篇博客记录下markdown常用的一些有语法，既是一种整理也是一个加深印象和巩固的过程。<br>感谢菜鸟教程的详细总结，省去了我不少时间，这里只介绍我常用到的，如果需要请点击链接来更全面的学习<a target="_blank" rel="noopener" href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟的Markdown教程</a>。</p>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>一个简单的出纸系统，esp8266的小实验，主要是深入了解下360舵机的原理，并尝试应用在了项目上，最重要的还是对点灯科技的加深了解，属实是懒人福音了。</p>
 <span id="more"></span>
-<h2 id="一、Markdown标题"><a href="#一、Markdown标题" class="headerlink" title="一、Markdown标题"></a>一、Markdown标题</h2><p>Markdown的标题可以使用“#”+空格来进行分级，几级标题就写几个“#”，最多可至六级标题。<br>例子：  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
-<p>效果👇</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><hr>
-<h2 id="二、Markdown段落"><a href="#二、Markdown段落" class="headerlink" title="二、Markdown段落"></a>二、Markdown段落</h2><p>1.使用两个空格来换行<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">你好，世界！//无换行</span><br><span class="line">你好，  世界！//换行</span><br></pre></td></tr></table></figure>
-<p>效果👇<br>你好，世界！//无换行</p>
-<p>你好，<br>世界！//换行</p>
-<p>2.使用三个以上“-”来画分割线<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>效果👇  </p>
-<hr>
-<p>3.使用“*”来赋予不同的字体<br>例子：  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*斜体文本*</span><br><span class="line">**粗体文本**</span><br><span class="line">***粗斜体文本***</span><br></pre></td></tr></table></figure>
-<p>效果👇<br><em>斜体文本</em><br><strong>粗体文本</strong><br><em><strong>粗斜体文本</strong></em>  </p>
-<hr>
-<h2 id="三、Markdown代码"><a href="#三、Markdown代码" class="headerlink" title="三、Markdown代码"></a>三、Markdown代码</h2><p>用“```”包裹一段代码，并指定一种语言（也可以不指定）<br>例子：  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``` </span><br><span class="line">printf();</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-<p>效果👇  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf();</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="四、Markdown的链接形式"><a href="#四、Markdown的链接形式" class="headerlink" title="四、Markdown的链接形式"></a>四、Markdown的链接形式</h2><p>用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[链接名称](www.xxxxxx.com)</span><br></pre></td></tr></table></figure>
-<p>的形式来生成一个不直接暴露网址的链接。<br>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[isNineSun&#x27;s Blog](www.isNineSun.github.io)</span><br></pre></td></tr></table></figure>
-<p>效果👇<br><a href="www.isNineSun.github.io">isNineSun’s Blog</a><br><strong>如果你要直接引用网址而不用包装那么直接打进正文即可</strong></p>
-<hr>
-<h2 id="五、Markdown图片"><a href="#五、Markdown图片" class="headerlink" title="五、Markdown图片"></a>五、Markdown图片</h2><ul>
-<li>开头一个感叹号!</li>
-<li>然后是中括号[]，中间写上你的图片描述，<em>在点开图片的时候会显示</em>。</li>
-<li>后面加上你的图片地址，也可以再多添加一个图片的“描述”。<br>例子：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![_嘉然.jpg](http://tva1.sinaimg.cn/large/008ruEzYly1gyawosia27j30hs0hsmy2.jpg)</span><br><span class="line"></span><br><span class="line">![_嘉然.jpg](http://tva1.sinaimg.cn/large/008ruEzYly1gyawosia27j30hs0hsmy2.jpg &quot;嘉然&quot;)</span><br></pre></td></tr></table></figure>
-效果👇<br><img src="http://tva1.sinaimg.cn/large/008ruEzYly1gyawosia27j30hs0hsmy2.jpg" alt="_嘉然.jpg"></li>
+<h2 id="一、原件清单"><a href="#一、原件清单" class="headerlink" title="一、原件清单"></a>一、原件清单</h2><ul>
+<li>NodeMCU*1</li>
+<li>YL声音传感器*1</li>
+<li>mg90伺服电机*1</li>
+<li>led灯珠*1</li>
+<li>杜邦线 若干  </li>
 </ul>
-<p><img src="http://tva1.sinaimg.cn/large/008ruEzYly1gyawosia27j30hs0hsmy2.jpg" alt="_嘉然.jpg" title="嘉然">  </p>
+<h2 id="二、原件连接"><a href="#二、原件连接" class="headerlink" title="二、原件连接"></a>二、原件连接</h2><p><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfx1qxhvj30lj0f8q8r.jpg" alt="连线图.png"><br>连线图  </p>
+<table>
+<thead>
+<tr>
+<th>NodeMCU</th>
+<th>YL声音传感器</th>
+<th>sg90伺服电机</th>
+<th>led灯珠</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D4</td>
+<td></td>
+<td>I/O</td>
+<td></td>
+</tr>
+<tr>
+<td>D5</td>
+<td>DO</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>D6</td>
+<td></td>
+<td></td>
+<td>+正极</td>
+</tr>
+<tr>
+<td>VCC</td>
+<td>VCC</td>
+<td>VCC</td>
+<td></td>
+</tr>
+<tr>
+<td>GND</td>
+<td>GND</td>
+<td>GND</td>
+<td>-负极</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <hr>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>这是我日常中可能常用的几个语法的整理，如果你需要更全面的教程，欢迎去访问<a target="_blank" rel="noopener" href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟的Markdown教程</a>。</p>
+<h2 id="三、原理图与流程图"><a href="#三、原理图与流程图" class="headerlink" title="三、原理图与流程图"></a>三、原理图与流程图</h2><p><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfyvrd4lj30e30eowf5.jpg" alt="流程图.png"><br><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfyvrzeej30p00ei0vq.jpg" alt="原理图.png">  </p>
+<h2 id="四、代码"><a href="#四、代码" class="headerlink" title="四、代码"></a>四、代码</h2><p>小儿，上代码！</p>
+<pre><code>#define BLINKER_WIFI
+
+#include &lt;Blinker.h&gt;
+#include &lt;Servo.h&gt; 
+ 
+Servo myservo;
+ 
+int pos = 0; 
+int paper = 100;
+
+char auth[] = &quot;5c424f59ace0&quot;;
+char ssid[] = &quot;皇室家族Family&quot;;
+char pswd[] = &quot;sunlisunrusunxu@&quot;;
+
+// 新建组件对象
+BlinkerButton Button1(&quot;btn-uoz&quot;);
+BlinkerNumber Number1(&quot;num-89w&quot;);
+BlinkerSlider Slider1(&quot;ran-8qf&quot;);
+
+int counter = 0;
+int MIC = D5;        // D0 麦克风引脚连接开发板数字接口 2
+int LED = D6;        // LED  正极连接开发板数字接口3
+int VALOR;        // DO变量值
+int LEDDO;       // LED变量 
+
+
+
+void button1_callback(const String &amp; state)
+&#123;
+     myservo.attach(2);
+     myservo.write(10);             
+     delay(2000);  
+     myservo.detach();
+     Serial.println(&quot;已出纸&quot;); 
+     paper-=1;
+&#125;
+
+void slider_callback(int32_t value)
+&#123;
+  paper = value;
+&#125;
+
+void Mic_check()
+&#123;
+    Number1.print(paper);  
+    digitalWrite(LED, LOW); 
+     
+    VALOR = digitalRead(MIC);   // 数字读取DO
+    if (VALOR == HIGH)
+    &#123;
+      digitalWrite(LED, HIGH); 
+      delay(5000);      
+    &#125; 
+&#125;
+
+
+void setup()
+&#123;
+    // 初始化串口
+    Serial.begin(115200);
+    BLINKER_DEBUG.stream(Serial);
+    BLINKER_DEBUG.debugAll();
+    myservo.attach(2); 
+    myservo.write(90);              
+    delay(15); 
+
+    pinMode(MIC, INPUT);      // 麦克风输入口
+    pinMode(LED, OUTPUT);     // LED输出口
+   
+    // 初始化blinker
+    Blinker.begin(auth, ssid, pswd);
+
+    Button1.attach(button1_callback);
+    Slider1.attach(slider_callback);
+&#125;
+void loop() &#123;
+    Blinker.run();
+    Mic_check();
+&#125;
+</code></pre>
+<hr>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p>本次设计并不是一个很复杂的设计，可以说算是闲暇之时练个手吧，不过也算有些收获，比如声音传感器虽说运用起来很简单，也与其他传感器原理大同小异，但实际上我确实是第一次使用这个传感器，因此也算是增长了一些见识，希望下次项目能想起来把它加进去。</p>
 
       
 
@@ -292,11 +402,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">单片机设计</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习记录</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
         		</li>
       		
 		</ul>
@@ -312,7 +422,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/IT/杂项//" class="article-tag-list-link color3">杂项</a>
+        			<a href="/categories/IT/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
         		</li>
       		
 		</ul>
@@ -367,7 +477,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/01/12/MaikdownEdit/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/01/27/PaperManager/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -381,18 +491,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2022/01/12/ExpressageInfo/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          基于stc89c51Rc的扫码取件设计
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/01/11/MyFirstBlog/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的第一篇博客</div>
+    <a href="/2022/01/23/AgricultureMonitor/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基于ESP8266的农业气象监测站</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -419,7 +520,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Markdown%E6%A0%87%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">一、Markdown标题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number"></span> <span class="toc-text">一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">三级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">1.1.1.</span> <span class="toc-text">四级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%94%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">五级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%85%AD%E7%BA%A7%E6%A0%87%E9%A2%98"><span class="toc-number">1.1.1.1.1.</span> <span class="toc-text">六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Markdown%E6%AE%B5%E8%90%BD"><span class="toc-number">2.</span> <span class="toc-text">二、Markdown段落</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Markdown%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">三、Markdown代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Markdown%E7%9A%84%E9%93%BE%E6%8E%A5%E5%BD%A2%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">四、Markdown的链接形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Markdown%E5%9B%BE%E7%89%87"><span class="toc-number">5.</span> <span class="toc-text">五、Markdown图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9D%9F"><span class="toc-number">6.</span> <span class="toc-text">结束</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E4%BB%B6%E6%B8%85%E5%8D%95"><span class="toc-number">2.</span> <span class="toc-text">一、原件清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8E%9F%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">二、原件连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8E%9F%E7%90%86%E5%9B%BE%E4%B8%8E%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">三、原理图与流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BB%A3%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">四、代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">五、总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
