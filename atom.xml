@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2022-01-27T11:17:28.714Z</updated>
+  <updated>2022-01-27T11:20:02.630Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>基于stc89c51Rc的扫码取件设计</title>
+    <title>基于esp8266的智能出纸器</title>
     <link href="http://yoursite.com/2022/01/27/PaperManager/"/>
     <id>http://yoursite.com/2022/01/27/PaperManager/</id>
     <published>2022-01-27T09:58:04.000Z</published>
-    <updated>2022-01-27T11:17:28.714Z</updated>
+    <updated>2022-01-27T11:20:02.630Z</updated>
     
     <content type="html"><![CDATA[<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>一个简单的出纸系统，esp8266的小实验，主要是深入了解下360舵机的原理，并尝试应用在了项目上，最重要的还是对点灯科技的加深了解，属实是懒人福音了。</p><span id="more"></span><h2 id="一、原件清单"><a href="#一、原件清单" class="headerlink" title="一、原件清单"></a>一、原件清单</h2><ul><li>NodeMCU*1</li><li>YL声音传感器*1</li><li>mg90伺服电机*1</li><li>led灯珠*1</li><li>杜邦线 若干  </li></ul><h2 id="二、原件连接"><a href="#二、原件连接" class="headerlink" title="二、原件连接"></a>二、原件连接</h2><p><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfx1qxhvj30lj0f8q8r.jpg" alt="连线图.png"><br>连线图  </p><table><thead><tr><th>NodeMCU</th><th>YL声音传感器</th><th>sg90伺服电机</th><th>led灯珠</th></tr></thead><tbody><tr><td>D4</td><td></td><td>I/O</td><td></td></tr><tr><td>D5</td><td>DO</td><td></td><td></td></tr><tr><td>D6</td><td></td><td></td><td>+正极</td></tr><tr><td>VCC</td><td>VCC</td><td>VCC</td><td></td></tr><tr><td>GND</td><td>GND</td><td>GND</td><td>-负极</td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table><hr><h2 id="三、原理图与流程图"><a href="#三、原理图与流程图" class="headerlink" title="三、原理图与流程图"></a>三、原理图与流程图</h2><p><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfyvrd4lj30e30eowf5.jpg" alt="流程图.png"><br><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfyvrzeej30p00ei0vq.jpg" alt="原理图.png">  </p><h2 id="四、代码"><a href="#四、代码" class="headerlink" title="四、代码"></a>四、代码</h2><p>小儿，上代码！</p><pre><code>#define BLINKER_WIFI#include &lt;Blinker.h&gt;#include &lt;Servo.h&gt;  Servo myservo; int pos = 0; int paper = 100;char auth[] = &quot;5c424f59ace0&quot;;char ssid[] = &quot;皇室家族Family&quot;;char pswd[] = &quot;sunlisunrusunxu@&quot;;// 新建组件对象BlinkerButton Button1(&quot;btn-uoz&quot;);BlinkerNumber Number1(&quot;num-89w&quot;);BlinkerSlider Slider1(&quot;ran-8qf&quot;);int counter = 0;int MIC = D5;        // D0 麦克风引脚连接开发板数字接口 2int LED = D6;        // LED  正极连接开发板数字接口3int VALOR;        // DO变量值int LEDDO;       // LED变量 void button1_callback(const String &amp; state)&#123;     myservo.attach(2);     myservo.write(10);                  delay(2000);       myservo.detach();     Serial.println(&quot;已出纸&quot;);      paper-=1;&#125;void slider_callback(int32_t value)&#123;  paper = value;&#125;void Mic_check()&#123;    Number1.print(paper);      digitalWrite(LED, LOW);          VALOR = digitalRead(MIC);   // 数字读取DO    if (VALOR == HIGH)    &#123;      digitalWrite(LED, HIGH);       delay(5000);          &#125; &#125;void setup()&#123;    // 初始化串口    Serial.begin(115200);    BLINKER_DEBUG.stream(Serial);    BLINKER_DEBUG.debugAll();    myservo.attach(2);     myservo.write(90);                  delay(15);     pinMode(MIC, INPUT);      // 麦克风输入口    pinMode(LED, OUTPUT);     // LED输出口       // 初始化blinker    Blinker.begin(auth, ssid, pswd);    Button1.attach(button1_callback);    Slider1.attach(slider_callback);&#125;void loop() &#123;    Blinker.run();    Mic_check();&#125;</code></pre><hr><h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p>本次设计并不是一个很复杂的设计，可以说算是闲暇之时练个手吧，不过也算有些收获，比如声音传感器虽说运用起来很简单，也与其他传感器原理大同小异，但实际上我确实是第一次使用这个传感器，因此也算是增长了一些见识，希望下次项目能想起来把它加进去。</p>]]></content>
     
@@ -62,11 +62,11 @@
     <category term="esp8266" scheme="http://yoursite.com/categories/IT/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/esp8266/"/>
     
     
+    <category term="esp8266" scheme="http://yoursite.com/tags/esp8266/"/>
+    
     <category term="单片机设计" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/"/>
     
     <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
-    
-    <category term="esp8266" scheme="http://yoursite.com/tags/esp8266/"/>
     
   </entry>
   
