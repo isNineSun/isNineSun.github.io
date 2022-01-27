@@ -201,14 +201,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/IT/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/ESP8266/</loc>
+    <loc>http://yoursite.com/categories/All/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2022-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/All/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>http://yoursite.com/categories/IT/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/ESP8266/</loc>
     <lastmod>2022-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
