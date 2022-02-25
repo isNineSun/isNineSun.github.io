@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gzpym6xwajj31vo0v8dmw.jpg">
 <meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gzpyoofo1zj30nw1hct99.jpg">
 <meta property="article:published_time" content="2022-02-16T08:38:04.000Z">
-<meta property="article:modified_time" content="2022-02-25T11:15:58.564Z">
+<meta property="article:modified_time" content="2022-02-25T11:21:45.990Z">
 <meta property="article:author" content="NineSun">
 <meta property="article:tag" content="单片机设计">
 <meta property="article:tag" content="IT">
@@ -238,7 +238,6 @@ var _hmt = _hmt || [];
 <p>按照笔者自己的理解，mqtt与微博订阅的模式非常相近，微博（云服务器）的用户有我（设备）和刘谦（客户端），我关注了刘谦但是刘谦没有关注我，当刘谦发送了一条消息出去，本质上是发送给了微博的服务器，再由微博将刘谦的消息发送给关注了刘谦的人，比如我，这样我就可以接受到刘谦的消息了，反之，若是我发一条消息，因为刘谦没关注我，因此刘谦就收不到我发送的信息。  </p>
 <hr>
 <h2 id="三、硬件连接"><a href="#三、硬件连接" class="headerlink" title="三、硬件连接"></a>三、硬件连接</h2><p>稍微说一些Mqtt的概念之后还是绕回到老话题——硬件设计上，等到将整个硬件设计讲述完之后再继续深入介绍如何实现mqtt通信。<br><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gzpv86zcquj30h30daqaj.jpg" alt="硬件连接.png"><br><em>PS：这里笔者简单画了一个图，读者意会即可，仅仅是代表硬件的连线，并不是仿真图也不是电路图。</em><br>以下为具体连线表：<br>| NodeMCU | HC-SR501红外 | YL声音传感器 | 光敏传感器 | ssd1306 | npn三极管 | 一路5V继电器 | LED灯 | 18650电源 |<br>|———|————|———|——-|———|——–|———|——|———|<br>| D8      | out        |         |       |         |        |         |      |         |<br>| D2      |            | out     |       |         |        |         |      |         |<br>| D0      |            |         | do    |         |        |         |      |         |<br>| D7      |            |         |       | sck     |        |         |      |         |<br>| D6      |            |         |       | sda     |        |         |      |         |<br>| D3      |            |         |       |         | 基极     |         |      |         |<br>|         |            |         |       |         | 集电极    | in      |      |         |<br>| VCC     | VCC        | VCC     | VCC   | VCC     | 发射极    | DC+     |      |         |<br>| GND     | GND        | GND     | GND   | GND     |        | DC-     |      |         |<br>|         |            |         |       |         |        | com     |      | +       |<br>|         |            |         |       |         |        | NO      | 正极   |         |<br>|         |            |         |       |         |        |         | 负极   | -       |</p>
-<hr>
 <h2 id="四、硬件-软件流程图"><a href="#四、硬件-软件流程图" class="headerlink" title="四、硬件/软件流程图"></a>四、硬件/软件流程图</h2><p><strong>软件流程图：</strong><br><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gzpw3fn01cj30g30esgmc.jpg" alt="软件流程图.png"><br><strong>硬件流程图：</strong><br><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gzpw3fs3q7j30a90jhwfd.jpg" alt="硬件自动模式流程图.png">  </p>
 <hr>
 <h2 id="四、程序代码"><a href="#四、程序代码" class="headerlink" title="四、程序代码"></a>四、程序代码</h2><p>首先先放出硬件部分的代码。  </p>
@@ -749,15 +748,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习记录</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -766,6 +761,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">all</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
               </li>
              
               <li class="article-tag-list-item">
