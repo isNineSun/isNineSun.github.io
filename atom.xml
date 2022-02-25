@@ -91,11 +91,11 @@
     <category term="esp8266" scheme="http://yoursite.com/categories/IT/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/esp8266/"/>
     
     
-    <category term="esp8266" scheme="http://yoursite.com/tags/esp8266/"/>
-    
     <category term="单片机设计" scheme="http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/"/>
     
     <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+    
+    <category term="esp8266" scheme="http://yoursite.com/tags/esp8266/"/>
     
   </entry>
   
