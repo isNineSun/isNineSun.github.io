@@ -6,26 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>基于esp8266的智能出纸器 | isNineSun&#39;s Blog</title>
+  <title>Category: IT | isNineSun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="摘要一个简单的出纸系统，esp8266的小实验，主要是深入了解下360舵机的原理，并尝试应用在了项目上，最重要的还是对点灯科技的加深了解，属实是懒人福音了。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="基于esp8266的智能出纸器">
-<meta property="og:url" content="http://yoursite.com/2022/01/27/PaperManager/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="isNineSun&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/categories/Mqtt/IT/index.html">
 <meta property="og:site_name" content="isNineSun&#39;s Blog">
-<meta property="og:description" content="摘要一个简单的出纸系统，esp8266的小实验，主要是深入了解下360舵机的原理，并尝试应用在了项目上，最重要的还是对点灯科技的加深了解，属实是懒人福音了。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfx1qxhvj30lj0f8q8r.jpg">
-<meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfyvrd4lj30e30eowf5.jpg">
-<meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfyvrzeej30p00ei0vq.jpg">
-<meta property="og:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gysgbx2pnfj30tu1hcn25.jpg">
-<meta property="article:published_time" content="2022-01-27T09:58:04.000Z">
-<meta property="article:modified_time" content="2022-01-27T11:25:51.018Z">
 <meta property="article:author" content="NineSun">
-<meta property="article:tag" content="单片机设计">
-<meta property="article:tag" content="IT">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfx1qxhvj30lj0f8q8r.jpg">
   
     <link rel="alternative" href="/atom.xml" title="isNineSun&#39;s Blog" type="application/atom+xml">
   
@@ -192,214 +181,36 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-PaperManager" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      基于esp8266的智能出纸器
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/01/16/Mqtt_CityLighting/" class="archive-article-date">
+  	<time datetime="2022-01-16T08:38:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-16</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/01/16/Mqtt_CityLighting/">基于mqtt技术的城市智能路灯系统设计</a>
     </h1>
   
 
-        
-        <a href="/2022/01/27/PaperManager/" class="archive-article-date">
-  	<time datetime="2022-01-27T09:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>一个简单的出纸系统，esp8266的小实验，主要是深入了解下360舵机的原理，并尝试应用在了项目上，最重要的还是对点灯科技的加深了解，属实是懒人福音了。</p>
-<span id="more"></span>
-<h2 id="一、原件清单"><a href="#一、原件清单" class="headerlink" title="一、原件清单"></a>一、原件清单</h2><ul>
-<li>NodeMCU*1</li>
-<li>YL声音传感器*1</li>
-<li>mg90伺服电机*1</li>
-<li>led灯珠*1</li>
-<li>杜邦线 若干  </li>
-</ul>
-<h2 id="二、原件连接"><a href="#二、原件连接" class="headerlink" title="二、原件连接"></a>二、原件连接</h2><p><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfx1qxhvj30lj0f8q8r.jpg" alt="连线图.png"><br>连线图  </p>
-<table>
-<thead>
-<tr>
-<th>NodeMCU</th>
-<th>YL声音传感器</th>
-<th>sg90伺服电机</th>
-<th>led灯珠</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>D4</td>
-<td></td>
-<td>I/O</td>
-<td></td>
-</tr>
-<tr>
-<td>D5</td>
-<td>DO</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>D6</td>
-<td></td>
-<td></td>
-<td>+正极</td>
-</tr>
-<tr>
-<td>VCC</td>
-<td>VCC</td>
-<td>VCC</td>
-<td></td>
-</tr>
-<tr>
-<td>GND</td>
-<td>GND</td>
-<td>GND</td>
-<td>-负极</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="三、原理图与流程图"><a href="#三、原理图与流程图" class="headerlink" title="三、原理图与流程图"></a>三、原理图与流程图</h2><p><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfyvrd4lj30e30eowf5.jpg" alt="流程图.png"><br><img src="http://tva1.sinaimg.cn/mw690/008ruEzYly1gysfyvrzeej30p00ei0vq.jpg" alt="原理图.png">  </p>
-<h2 id="四、代码"><a href="#四、代码" class="headerlink" title="四、代码"></a>四、代码</h2><p>小儿，上代码！</p>
-<pre><code>#define BLINKER_WIFI
-
-#include &lt;Blinker.h&gt;
-#include &lt;Servo.h&gt; 
- 
-Servo myservo;
- 
-int pos = 0; 
-int paper = 100;
-
-char auth[] = &quot;5c424f59ace0&quot;;
-char ssid[] = &quot;皇室家族Family&quot;;
-char pswd[] = &quot;sunlisunrusunxu@&quot;;
-
-// 新建组件对象
-BlinkerButton Button1(&quot;btn-uoz&quot;);
-BlinkerNumber Number1(&quot;num-89w&quot;);
-BlinkerSlider Slider1(&quot;ran-8qf&quot;);
-
-int counter = 0;
-int MIC = D5;        // D0 麦克风引脚连接开发板数字接口 2
-int LED = D6;        // LED  正极连接开发板数字接口3
-int VALOR;        // DO变量值
-int LEDDO;       // LED变量 
-
-
-
-void button1_callback(const String &amp; state)
-&#123;
-     myservo.attach(2);
-     myservo.write(10);             
-     delay(2000);  
-     myservo.detach();
-     Serial.println(&quot;已出纸&quot;); 
-     paper-=1;
-&#125;
-
-void slider_callback(int32_t value)
-&#123;
-  paper = value;
-&#125;
-
-void Mic_check()
-&#123;
-    Number1.print(paper);  
-    digitalWrite(LED, LOW); 
-     
-    VALOR = digitalRead(MIC);   // 数字读取DO
-    if (VALOR == HIGH)
-    &#123;
-      digitalWrite(LED, HIGH); 
-      delay(5000);      
-    &#125; 
-&#125;
-
-
-void setup()
-&#123;
-    // 初始化串口
-    Serial.begin(115200);
-    BLINKER_DEBUG.stream(Serial);
-    BLINKER_DEBUG.debugAll();
-    myservo.attach(2); 
-    myservo.write(90);              
-    delay(15); 
-
-    pinMode(MIC, INPUT);      // 麦克风输入口
-    pinMode(LED, OUTPUT);     // LED输出口
-   
-    // 初始化blinker
-    Blinker.begin(auth, ssid, pswd);
-
-    Button1.attach(button1_callback);
-    Slider1.attach(slider_callback);
-&#125;
-void loop() &#123;
-    Blinker.run();
-    Mic_check();
-&#125;
-</code></pre>
-<hr>
-<h2 id="五、成品展示"><a href="#五、成品展示" class="headerlink" title="五、成品展示"></a>五、成品展示</h2><p><img src="http://tva1.sinaimg.cn/large/008ruEzYly1gysgbx2pnfj30tu1hcn25.jpg" alt="智能出纸器.jpg">  </p>
-<p>喜大普奔！铁直男终于懂得做个外壳了！</p>
-<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>本次设计并不是一个很复杂的设计，可以说算是闲暇之时练个手吧，不过也算有些收获，比如声音传感器虽说运用起来很简单，也与其他传感器原理大同小异，但实际上我确实是第一次使用这个传感器，因此也算是增长了一些见识，希望下次项目能想起来把它加进去。</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢投喂！！！<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/weixin.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -411,138 +222,46 @@ void loop() &#123;
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Mqtt</a>
+        		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        			<a href="/categories/Mqtt//" class="article-tag-list-link color5">Mqtt</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/IT/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
+        			<a href="/categories/Mqtt/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Mqtt/IT/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/01/27/PaperManager/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
   
   
-    <a href="/2022/01/23/AgricultureMonitor/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">基于ESP8266的农业气象监测站</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E4%BB%B6%E6%B8%85%E5%8D%95"><span class="toc-number">2.</span> <span class="toc-text">一、原件清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8E%9F%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">二、原件连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8E%9F%E7%90%86%E5%9B%BE%E4%B8%8E%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">三、原理图与流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BB%A3%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">四、代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%88%90%E5%93%81%E5%B1%95%E7%A4%BA"><span class="toc-number">6.</span> <span class="toc-text">五、成品展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">六、总结</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -565,10 +284,10 @@ void loop() &#123;
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
