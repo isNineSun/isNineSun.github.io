@@ -110,6 +110,13 @@
 
   
   <url>
+    <loc>http://yoursite.com/tags/esp8266/</loc>
+    <lastmod>2022-03-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/tags/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2022-03-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -118,6 +125,13 @@
   
   <url>
     <loc>http://yoursite.com/tags/IT/</loc>
+    <lastmod>2022-03-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/ESP8266/</loc>
     <lastmod>2022-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -152,20 +166,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/esp8266/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/tags/ESP8266/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/tags/IT%EF%BC%8CMqtt/</loc>
     <lastmod>2022-03-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -182,21 +182,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/categories/IT/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/categories/All/</loc>
     <lastmod>2022-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -210,7 +196,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/All/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <lastmod>2022-03-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/All/</loc>
     <lastmod>2022-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -218,6 +211,13 @@
   
   <url>
     <loc>http://yoursite.com/categories/IT/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/esp8266/</loc>
+    <lastmod>2022-03-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/All/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2022-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
