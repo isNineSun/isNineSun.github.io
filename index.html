@@ -183,27 +183,27 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Mqtt_CityLighting" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MqttLightingServers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/16/Mqtt_CityLighting/">基于mqtt技术的城市智能路灯系统设计</a>
+      <a class="article-title" href="/2022/02/17/MqttLightingServers/">基于Mqtt的城市智能路灯控制系统</a>
     </h1>
   
 
         
-        <a href="/2022/02/16/Mqtt_CityLighting/" class="archive-article-date">
-  	<time datetime="2022-02-16T08:38:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-16</time>
+        <a href="/2022/02/17/MqttLightingServers/" class="archive-article-date">
+  	<time datetime="2022-02-17T06:49:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>这是一个城市智能路灯系统的设计，设计硬件部分本身并不复杂，实现的基本功能就是自动模式下判断环境情况（有无人/有无光/有无声音）然后开启/关闭照明的一个设计。因此本次设计的重心在于Mqtt的协议的学习和使用。看过笔者前几篇博客的应该明白，笔者之前的几个物联网设计更多的是倾向于第三方的开源平台（如：点灯科技）。用第三方开源平台来做物联网项目并无不可，<strong>但对于一个电子爱好者也好，或者说一个极客来说，总是依赖第三方终归是差了点儿意思，简单的安卓开发也是物联网中不可或缺的一环，因此诞生了这么一个项目。</strong> 笔者之前学习过一些java，但Android Studio接触是第一次，因此这个项目也是一次对as开发的学习。</p>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>这是一个城市智能路灯控制系统的设计，实现功能主要为光线充足时不亮灯，当光线不足时开始检测，如果有人或者有声音便亮起路灯，这是自动模式，设备可通过手机APP切换为手动模式，在手动模式下用户可通过手机APP来实现对路灯的操控。<br><strong>本项目本身逻辑比较简单，硬件部分也是很常见的设计</strong>，与之前做过的项目大同小异，本质上还是传感器采集信息然后单片机负责进行判断和开关电路。因此这个项目的重点其实在于<code>Mqtt</code>的使用，之前的几个物联网设计中，手机端的实现主要是依靠第三方的点灯科技的接口，这种方式实现联网终究<strong>可玩性还是太低了</strong>，况且对于一个硬件电子爱好者来说，实现物联网仅局限于云智能也太拉跨了，<strong>因此学习了<code>AndroidStudio</code>开发<code>App</code>从而实现Mqtt的通信协来控制设备实现物联网，我个人认为这一个流程的实现才是真正的物联网开发。</strong></p>
         
       
 
@@ -221,11 +221,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Mqtt</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT，Mqtt</a>
         		</li>
       		
 		</ul>
@@ -254,7 +250,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/16/Mqtt_CityLighting/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/02/17/MqttLightingServers/">展开全文 >></a>
         </p>
       
 
@@ -411,15 +407,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">esp8266</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">单片机设计</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">esp8266</a>
         		</li>
       		
 		</ul>
@@ -1125,19 +1121,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">单片机设计</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1157,7 +1145,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Mqtt</a>
+                <a href="javascript:void(0)" class="js-tag color3">esp8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ESP8266</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IT，Mqtt</a>
               </li>
             
             <div class="clearfix"></div>
