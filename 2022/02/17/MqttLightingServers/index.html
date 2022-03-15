@@ -18,8 +18,10 @@
 <meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gzgkbnlhzaj30h30daqaj.jpg">
 <meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gzgkcslvbfj30mq0cemxr.jpg">
 <meta property="og:image" content="http://tva1.sinaimg.cn/mw690/008ruEzYly1gzgkpq5012j30g30cqmxu.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gzgmkr2icdj30gy0ddwkp.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/008ruEzYly1gzgmkr2um1j30gv0owwiq.jpg">
 <meta property="article:published_time" content="2022-02-17T06:49:04.000Z">
-<meta property="article:modified_time" content="2022-02-17T09:19:34.000Z">
+<meta property="article:modified_time" content="2022-03-15T15:10:06.842Z">
 <meta property="article:author" content="NineSun">
 <meta property="article:tag" content="单片机设计">
 <meta property="article:tag" content="IT，Mqtt">
@@ -623,237 +625,23 @@ void reconnect()&#123;
 </ul>
 <p>接下来是软件方面的代码，软件开发使用<strong>AndroidStudio</strong>进行，首先需要添加MQTT的依赖库，然后app还需要获取一些必要的权限，这些都是必须要配置的：  </p>
 <p><strong>首先</strong>，在bulid.gradle 里面最后的依赖那里复制这段代码（在那一排“implementation”后面加）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//导入Mqtt环境依赖</span><br><span class="line">    implementation &#x27;org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1&#x27;</span><br><span class="line">    implementation &#x27;org.eclipse.paho:org.eclipse.paho.android.service:1.1.1&#x27;</span><br><span class="line"></span><br><span class="line">```    </span><br><span class="line">然后软件点击右上角的sync now，进行同步，建议科学上网，就能正常加载包了;</span><br><span class="line"></span><br><span class="line">**然后**，需要配置app需要的一些权限：找到```AndroidManifest.xml```文件，在这个文件中加入：</span><br></pre></td></tr></table></figure>
- <!-- Permissions the Application Requires -->
-<pre><code>&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//导入Mqtt环境依赖</span><br><span class="line">    implementation &#x27;org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1&#x27;</span><br><span class="line">    implementation &#x27;org.eclipse.paho:org.eclipse.paho.android.service:1.1.1&#x27;</span><br></pre></td></tr></table></figure>
+<p>然后软件点击右上角的sync now，进行同步，建议科学上网，就能正常加载包了;</p>
+<p><strong>然后</strong>，需要配置app需要的一些权限：找到<code>AndroidManifest.xml</code>文件，在这个文件中加入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Permissions the Application Requires --&gt;</span><br><span class="line">   &lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;</span><br><span class="line">   &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;</span><br><span class="line">   &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;</span><br><span class="line"></span><br><span class="line">   &lt;!--&lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;--&gt;</span><br><span class="line">   &lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot; /&gt;</span><br><span class="line">   &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<p>为防止有的同学完全没接触过as开发，特别说明，这段直接添加到原代码的<code> &lt;application</code>之前就可以了，就在前面几行，很容易找到。</p>
+<p><strong>最后</strong>，还是在这个文件中，在代码末尾<code>&lt;/activity&gt;</code>这句话的后面，紧跟着插入一段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Mqtt Service --&gt;</span><br><span class="line">       &lt;service android:name=&quot;org.eclipse.paho.android.service.MqttService&quot;&gt;</span><br><span class="line">       &lt;/service&gt;</span><br></pre></td></tr></table></figure>
+<p>来引入Mqt的服务。<br><strong>完成之后，前期的配置就完成了可以愉快的写代码了(≧∇≦)ﾉ。</strong><br>程序逻辑代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br></pre></td><td class="code"><pre><span class="line">package com.example.mqtt_study;</span><br><span class="line"></span><br><span class="line">import androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line">import android.os.Bundle;</span><br><span class="line">import android.view.View;</span><br><span class="line">import android.widget.Button;</span><br><span class="line">import android.widget.ImageButton;</span><br><span class="line">import android.widget.ImageView;</span><br><span class="line">import android.widget.LinearLayout;</span><br><span class="line">import android.widget.TextView;</span><br><span class="line">import android.widget.Toast;</span><br><span class="line">import android.widget.Switch;</span><br><span class="line"></span><br><span class="line">import org.eclipse.paho.android.service.MqttAndroidClient;</span><br><span class="line">import org.eclipse.paho.client.mqttv3.IMqttActionListener;</span><br><span class="line">import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;</span><br><span class="line">import org.eclipse.paho.client.mqttv3.IMqttMessageListener;</span><br><span class="line">import org.eclipse.paho.client.mqttv3.IMqttToken;</span><br><span class="line">import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;</span><br><span class="line">import org.eclipse.paho.client.mqttv3.MqttConnectOptions;</span><br><span class="line">import org.eclipse.paho.client.mqttv3.MqttException;</span><br><span class="line">import org.eclipse.paho.client.mqttv3.MqttMessage;</span><br><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    MqttAndroidClient mqttAndroidClient;//建立Client客户端实例</span><br><span class="line"></span><br><span class="line">    final String serverUri = &quot;tcp://101.43.207.139:1883&quot;;//服务器地址</span><br><span class="line"></span><br><span class="line">    String clientId = &quot;isNineSun_android&quot;;//客户端标识，可以随便起，保证不重复即可</span><br><span class="line">    final String subscriptionTopic = &quot;sub_ywt&quot;;//订阅的主题</span><br><span class="line">    final String publishTopic = &quot;pub_ywt&quot;;</span><br><span class="line"></span><br><span class="line">    //UI变量</span><br><span class="line">    private ImageButton button1,button2;</span><br><span class="line">    private boolean light,auto;</span><br><span class="line">    private TextView text;</span><br><span class="line">    private ImageView image;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        UI_init();</span><br><span class="line">        Mqtt_init();</span><br><span class="line"></span><br><span class="line">        button1.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                light=!light;</span><br><span class="line">                String publishMsg=&quot;&#123;\&quot;set_led\&quot;:&quot;+(light?&quot;1&quot;:&quot;0&quot;)+&quot;&#125;&quot;;</span><br><span class="line">                publishMessage(publishMsg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        button2.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                auto=!auto;</span><br><span class="line">                String publishMsg=&quot;&#123;\&quot;set_auto\&quot;:&quot;+(auto?&quot;1&quot;:&quot;0&quot;)+&quot;&#125;&quot;;</span><br><span class="line">                publishMessage(publishMsg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void UI_init()&#123;</span><br><span class="line">        button1 = findViewById(R.id.but_1);</span><br><span class="line">        button2 = findViewById(R.id.but_2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void Mqtt_init()&#123;</span><br><span class="line">        //新建Client实例</span><br><span class="line">        //clientId = clientId + System.currentTimeMillis();//在clientId即客户端标识后面加上时间戳来保证唯一性</span><br><span class="line">        mqttAndroidClient = new MqttAndroidClient(getApplicationContext(), serverUri, clientId);</span><br><span class="line">        //新建回调函数</span><br><span class="line">        mqttAndroidClient.setCallback(new MqttCallbackExtended() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            //连接完成</span><br><span class="line">            public void connectComplete(boolean reconnect, String serverURI) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">            //失去连接</span><br><span class="line">            @Override</span><br><span class="line">            public void connectionLost(Throwable cause) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">            //信息送达</span><br><span class="line">            @Override</span><br><span class="line">            public void messageArrived(String topic, MqttMessage message) throws Exception &#123;</span><br><span class="line">                String msg = new String(message.getPayload());</span><br><span class="line">                //String T_val=msg.substring(msg.indexOf(&quot;&#123;temperature:&quot;),msg.indexOf(&quot;&#125;&quot;));</span><br><span class="line">                makeToast(msg);</span><br><span class="line">                text.setText(msg);</span><br><span class="line">                image.setImageAlpha(1);</span><br><span class="line">            &#125;</span><br><span class="line">            //推送完成</span><br><span class="line">            @Override</span><br><span class="line">            public void deliveryComplete(IMqttDeliveryToken token) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        //连接设置、是否自动重连、是否清理Session</span><br><span class="line">        MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();</span><br><span class="line">        mqttConnectOptions.setAutomaticReconnect(true);</span><br><span class="line">        mqttConnectOptions.setCleanSession(false);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //正式开始建立连接</span><br><span class="line">        try &#123;</span><br><span class="line">            //addToHistory(&quot;Connecting to &quot; + serverUri);</span><br><span class="line">            mqttAndroidClient.connect(mqttConnectOptions, null, new IMqttActionListener() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void onSuccess(IMqttToken asyncActionToken) &#123;</span><br><span class="line">                    makeToast(&quot;连接成功&quot;);</span><br><span class="line">                    subscribeToTopic();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                @Override</span><br><span class="line">                public void onFailure(IMqttToken asyncActionToken, Throwable exception) &#123;</span><br><span class="line">                    makeToast(&quot;连接失败&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125; catch (MqttException ex)&#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void subscribeToTopic()&#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            //开始订阅</span><br><span class="line">            mqttAndroidClient.subscribe(subscriptionTopic, 0, null, new IMqttActionListener() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void onSuccess(IMqttToken asyncActionToken) &#123;</span><br><span class="line">                    makeToast(&quot;成功订阅&quot;+subscriptionTopic);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                @Override</span><br><span class="line">                public void onFailure(IMqttToken asyncActionToken, Throwable exception) &#123;</span><br><span class="line">                    makeToast(&quot;未能订阅&quot;+subscriptionTopic);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">        &#125; catch (MqttException ex)&#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void publishMessage(String publishMessage)&#123;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            MqttMessage message = new MqttMessage();</span><br><span class="line">            message.setPayload(publishMessage.getBytes());</span><br><span class="line">            mqttAndroidClient.publish(publishTopic, message);</span><br><span class="line">            if(!mqttAndroidClient.isConnected())&#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (MqttException e) &#123;</span><br><span class="line">            System.err.println(&quot;Error Publishing: &quot; + e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void makeToast(String str)&#123;</span><br><span class="line">        Toast.makeText(MainActivity.this,str,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-&lt;!--&lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;--&gt;
-&lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">为防止有的同学完全没接触过as开发，特别说明，这段直接添加到原代码的``` &lt;application```之前就可以了，就在前面几行，很容易找到。</span><br><span class="line"></span><br><span class="line">**最后**，还是在这个文件中，在代码末尾```&lt;/activity&gt;```这句话的后面，紧跟着插入一段  </span><br></pre></td></tr></table></figure>
- <!-- Mqtt Service -->
-<pre><code>    &lt;service android:name=&quot;org.eclipse.paho.android.service.MqttService&quot;&gt;
-    &lt;/service&gt;
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">来引入Mqt的服务。  </span><br><span class="line">**完成之后，前期的配置就完成了可以愉快的写代码了(≧∇≦)ﾉ。**</span><br><span class="line">  </span><br><span class="line">程序逻辑代码：</span><br></pre></td></tr></table></figure>
-<p>package com.example.mqtt_study;</p>
-<p>import androidx.appcompat.app.AppCompatActivity;</p>
-<p>import android.os.Bundle;<br>import android.view.View;<br>import android.widget.Button;<br>import android.widget.ImageButton;<br>import android.widget.ImageView;<br>import android.widget.LinearLayout;<br>import android.widget.TextView;<br>import android.widget.Toast;<br>import android.widget.Switch;</p>
-<p>import org.eclipse.paho.android.service.MqttAndroidClient;<br>import org.eclipse.paho.client.mqttv3.IMqttActionListener;<br>import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;<br>import org.eclipse.paho.client.mqttv3.IMqttMessageListener;<br>import org.eclipse.paho.client.mqttv3.IMqttToken;<br>import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;<br>import org.eclipse.paho.client.mqttv3.MqttConnectOptions;<br>import org.eclipse.paho.client.mqttv3.MqttException;<br>import org.eclipse.paho.client.mqttv3.MqttMessage;</p>
-<p>public class MainActivity extends AppCompatActivity {</p>
-<pre><code>MqttAndroidClient mqttAndroidClient;//建立Client客户端实例
-
-final String serverUri = &quot;tcp://101.43.207.139:1883&quot;;//服务器地址
-
-String clientId = &quot;isNineSun_android&quot;;//客户端标识，可以随便起，保证不重复即可
-final String subscriptionTopic = &quot;sub_ywt&quot;;//订阅的主题
-final String publishTopic = &quot;pub_ywt&quot;;
-
-//UI变量
-private ImageButton button1,button2;
-private boolean light,auto;
-private TextView text;
-private ImageView image;
-
-
-@Override
-protected void onCreate(Bundle savedInstanceState) &#123;
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-
-    UI_init();
-    Mqtt_init();
-
-    button1.setOnClickListener(new View.OnClickListener() &#123;
-        @Override
-        public void onClick(View view) &#123;
-            light=!light;
-            String publishMsg=&quot;&#123;\&quot;set_led\&quot;:&quot;+(light?&quot;1&quot;:&quot;0&quot;)+&quot;&#125;&quot;;
-            publishMessage(publishMsg);
-        &#125;
-    &#125;);
-    button2.setOnClickListener(new View.OnClickListener() &#123;
-        @Override
-        public void onClick(View view) &#123;
-            auto=!auto;
-            String publishMsg=&quot;&#123;\&quot;set_auto\&quot;:&quot;+(auto?&quot;1&quot;:&quot;0&quot;)+&quot;&#125;&quot;;
-            publishMessage(publishMsg);
-        &#125;
-    &#125;);
-
-
-&#125;
-
-void UI_init()&#123;
-    button1 = findViewById(R.id.but_1);
-    button2 = findViewById(R.id.but_2);
-&#125;
-
-public void Mqtt_init()&#123;
-    //新建Client实例
-    //clientId = clientId + System.currentTimeMillis();//在clientId即客户端标识后面加上时间戳来保证唯一性
-    mqttAndroidClient = new MqttAndroidClient(getApplicationContext(), serverUri, clientId);
-    //新建回调函数
-    mqttAndroidClient.setCallback(new MqttCallbackExtended() &#123;
-        @Override
-        //连接完成
-        public void connectComplete(boolean reconnect, String serverURI) &#123;
-        &#125;
-        //失去连接
-        @Override
-        public void connectionLost(Throwable cause) &#123;
-        &#125;
-        //信息送达
-        @Override
-        public void messageArrived(String topic, MqttMessage message) throws Exception &#123;
-            String msg = new String(message.getPayload());
-            //String T_val=msg.substring(msg.indexOf(&quot;&#123;temperature:&quot;),msg.indexOf(&quot;&#125;&quot;));
-            makeToast(msg);
-            text.setText(msg);
-            image.setImageAlpha(1);
-        &#125;
-        //推送完成
-        @Override
-        public void deliveryComplete(IMqttDeliveryToken token) &#123;
-
-        &#125;
-    &#125;);
-
-    //连接设置、是否自动重连、是否清理Session
-    MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
-    mqttConnectOptions.setAutomaticReconnect(true);
-    mqttConnectOptions.setCleanSession(false);
-
-
-    //正式开始建立连接
-    try &#123;
-        //addToHistory(&quot;Connecting to &quot; + serverUri);
-        mqttAndroidClient.connect(mqttConnectOptions, null, new IMqttActionListener() &#123;
-            @Override
-            public void onSuccess(IMqttToken asyncActionToken) &#123;
-                makeToast(&quot;连接成功&quot;);
-                subscribeToTopic();
-            &#125;
-
-            @Override
-            public void onFailure(IMqttToken asyncActionToken, Throwable exception) &#123;
-                makeToast(&quot;连接失败&quot;);
-            &#125;
-        &#125;);
-
-
-    &#125; catch (MqttException ex)&#123;
-        ex.printStackTrace();
-    &#125;
-&#125;
-
-public void subscribeToTopic()&#123;
-    try &#123;
-        //开始订阅
-        mqttAndroidClient.subscribe(subscriptionTopic, 0, null, new IMqttActionListener() &#123;
-            @Override
-            public void onSuccess(IMqttToken asyncActionToken) &#123;
-                makeToast(&quot;成功订阅&quot;+subscriptionTopic);
-            &#125;
-
-            @Override
-            public void onFailure(IMqttToken asyncActionToken, Throwable exception) &#123;
-                makeToast(&quot;未能订阅&quot;+subscriptionTopic);
-            &#125;
-        &#125;);
-
-    &#125; catch (MqttException ex)&#123;
-        ex.printStackTrace();
-    &#125;
-&#125;
-
-public void publishMessage(String publishMessage)&#123;
-
-    try &#123;
-        MqttMessage message = new MqttMessage();
-        message.setPayload(publishMessage.getBytes());
-        mqttAndroidClient.publish(publishTopic, message);
-        if(!mqttAndroidClient.isConnected())&#123;
-        &#125;
-    &#125; catch (MqttException e) &#123;
-        System.err.println(&quot;Error Publishing: &quot; + e.getMessage());
-        e.printStackTrace();
-    &#125;
-&#125;
-
-private void makeToast(String str)&#123;
-    Toast.makeText(MainActivity.this,str,Toast.LENGTH_SHORT).show();
-&#125;
-</code></pre>
-<p>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">软件的布局文件：</span><br></pre></td></tr></table></figure>
-<?xml version="1.0" encoding="utf-8"?>
-<p>&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=”<a target="_blank" rel="noopener" href="http://schemas.android.com/apk/res/android&quot;">http://schemas.android.com/apk/res/android&quot;</a><br>    xmlns:app=”<a target="_blank" rel="noopener" href="http://schemas.android.com/apk/res-auto&quot;">http://schemas.android.com/apk/res-auto&quot;</a><br>    xmlns:tools=”<a target="_blank" rel="noopener" href="http://schemas.android.com/tools&quot;">http://schemas.android.com/tools&quot;</a><br>    android:layout_width=”match_parent”<br>    android:layout_height=”match_parent”<br>    tools:context=”.MainActivity”&gt;</p>
-<pre><code>&lt;LinearLayout
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;
-    android:orientation=&quot;vertical&quot;&gt;
-
-    &lt;LinearLayout
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:visibility=&quot;visible&quot;&gt;
-        &lt;ImageView
-            android:layout_width=&quot;wrap_content&quot;
-            android:layout_height=&quot;20sp&quot;
-            android:src=&quot;@drawable/online&quot;
-            android:alpha=&quot;0&quot;&gt;
-
-        &lt;/ImageView&gt;
-        &lt;TextView
-            android:layout_width=&quot;wrap_content&quot;
-            android:layout_height=&quot;wrap_content&quot;
-            android:text=&quot;&quot;&gt;
-
-        &lt;/TextView&gt;
-    &lt;/LinearLayout&gt;
-    &lt;ImageButton
-        android:layout_width=&quot;100dp&quot;
-        android:layout_height=&quot;100dp&quot;
-        android:layout_gravity=&quot;center&quot;
-        android:layout_marginTop=&quot;200dp&quot;
-        android:id=&quot;@+id/but_1&quot;
-        android:backgroundTint=&quot;@color/white&quot;
-        android:src=&quot;@drawable/power&quot;&gt;
-
-
-    &lt;/ImageButton&gt;
-
-    &lt;ImageButton
-        android:layout_width=&quot;100dp&quot;
-        android:layout_height=&quot;100dp&quot;
-        android:layout_gravity=&quot;center&quot;
-        android:id=&quot;@+id/but_2&quot;
-        android:backgroundTint=&quot;@color/white&quot;
-        android:src=&quot;@drawable/swt&quot;&gt;
-
-    &lt;/ImageButton&gt;
-&lt;/LinearLayout&gt;
-</code></pre>
-<p>&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</p>
-<pre><code>程序代码我用了自己写的模板来节省开发时间，如果有人对我的模板感兴趣可以去我的github页面去拿，欢迎使用[Mqtt模板代码](https://github.com/isNineSun/isNineSun.github.io)！  
-
----
-
-## 五、实物图
-实物展示：
-![硬件.png](http://tva1.sinaimg.cn/large/008ruEzYly1gzgmkr2icdj30gy0ddwkp.jpg)
-![软件.png](http://tva1.sinaimg.cn/large/008ruEzYly1gzgmkr2um1j30gv0owwiq.jpg)
-  
----
-
-## 总结
-这次设计的硬件方面与之前的物联网设计大同小异，但是在Mqtt的配置方面学到了很多，也加深了对互联网概念的理解，以后有机会希望还能更深入更底层的去做物联网相关的开发，除此之外，AndroidStudio的开发我暂时也只是初窥门径而已，希望能更深入的掌握这个强大的工具，之后有机会我可能会做一些更偏软或者纯软的项目来加深对as开发的掌握。
-
-</code></pre>
+<p>软件的布局文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;.MainActivity&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line">        android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;LinearLayout</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:visibility=&quot;visible&quot;&gt;</span><br><span class="line">            &lt;ImageView</span><br><span class="line">                android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">                android:layout_height=&quot;20sp&quot;</span><br><span class="line">                android:src=&quot;@drawable/online&quot;</span><br><span class="line">                android:alpha=&quot;0&quot;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/ImageView&gt;</span><br><span class="line">            &lt;TextView</span><br><span class="line">                android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">                android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">                android:text=&quot;&quot;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/TextView&gt;</span><br><span class="line">        &lt;/LinearLayout&gt;</span><br><span class="line">        &lt;ImageButton</span><br><span class="line">            android:layout_width=&quot;100dp&quot;</span><br><span class="line">            android:layout_height=&quot;100dp&quot;</span><br><span class="line">            android:layout_gravity=&quot;center&quot;</span><br><span class="line">            android:layout_marginTop=&quot;200dp&quot;</span><br><span class="line">            android:id=&quot;@+id/but_1&quot;</span><br><span class="line">            android:backgroundTint=&quot;@color/white&quot;</span><br><span class="line">            android:src=&quot;@drawable/power&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;/ImageButton&gt;</span><br><span class="line"></span><br><span class="line">        &lt;ImageButton</span><br><span class="line">            android:layout_width=&quot;100dp&quot;</span><br><span class="line">            android:layout_height=&quot;100dp&quot;</span><br><span class="line">            android:layout_gravity=&quot;center&quot;</span><br><span class="line">            android:id=&quot;@+id/but_2&quot;</span><br><span class="line">            android:backgroundTint=&quot;@color/white&quot;</span><br><span class="line">            android:src=&quot;@drawable/swt&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/ImageButton&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>程序代码我用了自己写的模板来节省开发时间，如果有人对我的模板感兴趣可以去我的github页面去拿，欢迎使用<a target="_blank" rel="noopener" href="https://github.com/isNineSun/isNineSun.github.io">Mqtt模板代码</a>！  </p>
+<hr>
+<h2 id="五、实物图"><a href="#五、实物图" class="headerlink" title="五、实物图"></a>五、实物图</h2><p>实物展示：<br><img src="http://tva1.sinaimg.cn/large/008ruEzYly1gzgmkr2icdj30gy0ddwkp.jpg" alt="硬件.png"><br><img src="http://tva1.sinaimg.cn/large/008ruEzYly1gzgmkr2um1j30gv0owwiq.jpg" alt="软件.png"></p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这次设计的硬件方面与之前的物联网设计大同小异，但是在Mqtt的配置方面学到了很多，也加深了对互联网概念的理解，以后有机会希望还能更深入更底层的去做物联网相关的开发，除此之外，AndroidStudio的开发我暂时也只是初窥门径而已，希望能更深入的掌握这个强大的工具，之后有机会我可能会做一些更偏软或者纯软的项目来加深对as开发的掌握。</p>
 
       
 
@@ -1020,7 +808,7 @@ private void makeToast(String str)&#123;
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E4%BB%B6%E6%B8%85%E5%8D%95"><span class="toc-number">2.</span> <span class="toc-text">一、原件清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">二、硬件连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8E%9F%E7%90%86%E5%9B%BE-amp-%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">三、原理图&amp;流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">四、程序代码</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E4%BB%B6%E6%B8%85%E5%8D%95"><span class="toc-number">2.</span> <span class="toc-text">一、原件清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">二、硬件连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8E%9F%E7%90%86%E5%9B%BE-amp-%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">三、原理图&amp;流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">四、程序代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%9E%E7%89%A9%E5%9B%BE"><span class="toc-number">6.</span> <span class="toc-text">五、实物图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
