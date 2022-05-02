@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>isNineSun&#39;s Blog</title>
+  <title>Esp8266与51单片机的Ap模式发送数据模板 | isNineSun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="isNineSun&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="摘要之前写了一篇博客用来描述esp8266与51单片机如何进行连线和一些芯片的配置以及代码模板，但是并没有涉及到发送数据，这篇教程就用来放一篇51系列单片机透过esp8266向手机发送消息的模板。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Esp8266与51单片机的Ap模式发送数据模板">
+<meta property="og:url" content="http://yoursite.com/2022/05/02/AP_sendMessage/index.html">
 <meta property="og:site_name" content="isNineSun&#39;s Blog">
+<meta property="og:description" content="摘要之前写了一篇博客用来描述esp8266与51单片机如何进行连线和一些芯片的配置以及代码模板，但是并没有涉及到发送数据，这篇教程就用来放一篇51系列单片机透过esp8266向手机发送消息的模板。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-02T09:58:04.000Z">
+<meta property="article:modified_time" content="2022-05-02T04:59:39.627Z">
 <meta property="article:author" content="NineSun">
+<meta property="article:tag" content="单片机设计">
+<meta property="article:tag" content="IT">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="isNineSun&#39;s Blog" type="application/atom+xml">
@@ -181,16 +187,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-AP_sendMessage" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-AP_sendMessage" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/02/AP_sendMessage/">Esp8266与51单片机的Ap模式发送数据模板</a>
+    <h1 class="article-title" itemprop="name">
+      Esp8266与51单片机的Ap模式发送数据模板
     </h1>
   
 
@@ -204,9 +208,49 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>之前写了一篇博客用来描述esp8266与51单片机如何进行连线和一些芯片的配置以及代码模板，但是并没有涉及到发送数据，这篇教程就用来放一篇51系列单片机透过esp8266向手机发送消息的模板。</p>
-        
+<span id="more"></span>
+
+<h2 id="准备与连接"><a href="#准备与连接" class="headerlink" title="准备与连接"></a>准备与连接</h2><p>51单片机与esp8266芯片的配置与连线请参考上一篇博客进行配置，配置完成并连线即可。</p>
+<hr>
+<h2 id="发送代码"><a href="#发送代码" class="headerlink" title="发送代码"></a>发送代码</h2><p>将以下代码烧录进单片机中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;reg52.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;intrins.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">typedef unsigned int u16;	  //对数据类型进行声明定义</span><br><span class="line">typedef unsigned char u8;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#define MotorData P0 </span><br><span class="line">sbit P20_LED=P2^0;//led灯</span><br><span class="line">sbit LED1=P2^1;//led1</span><br><span class="line">sbit LED2=P2^2;//led2</span><br><span class="line">sbit LED3=P2^3;//led3</span><br><span class="line"></span><br><span class="line">unsigned int rec_dat[4]=&#123;1,2,3,4&#125;;         //存放要发送的数据</span><br><span class="line">char Recive_table[20]=&quot;&quot;;  //接收缓冲,最大20个字节</span><br><span class="line">char Recive_state = 0;   //接收完成标志</span><br><span class="line">void WIFI_Init(void);    //wifi初始化</span><br><span class="line">void sending(void);   //向手机发送温湿度数据</span><br><span class="line">void Uart_Init(void);    //串口初始化</span><br><span class="line">void ms_delay(int t);    //延时</span><br><span class="line">void LED(void);</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">int main (void)</span><br><span class="line">&#123; </span><br><span class="line">	u8 flag;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	Uart_Init();//串口初始化，波特率为9600</span><br><span class="line">	ms_delay(1000) ;</span><br><span class="line">	WIFI_Init(); //wifi初始化</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	/**********************主循环************************/</span><br><span class="line">	while(1)</span><br><span class="line">	&#123; </span><br><span class="line">	  //	ms_delay(1000);</span><br><span class="line">		if(Recive_state == 1)</span><br><span class="line">		&#123;</span><br><span class="line">			ES=0;  //清空接收标志位 </span><br><span class="line">			if((Recive_table[0]==&#x27;+&#x27;)&amp;&amp;(Recive_table[1]==&#x27;I&#x27;)&amp;&amp;(Recive_table[2]==&#x27;P&#x27;))//接收到的字符串形式为+IPD,x,x:y</span><br><span class="line">			&#123;</span><br><span class="line">			    if((Recive_table[3]==&#x27;D&#x27;)&amp;&amp;(Recive_table[6]==&#x27;,&#x27;))</span><br><span class="line">			    &#123;   </span><br><span class="line">			        if(Recive_table[9]==&#x27;1&#x27;)</span><br><span class="line">					&#123;</span><br><span class="line">						P20_LED = 0;					</span><br><span class="line">						ms_delay(1000);</span><br><span class="line">						P20_LED = 1;</span><br><span class="line">						sending(); //向手机发送数据</span><br><span class="line">					&#125;</span><br><span class="line">					if(Recive_table[9]==&#x27;0&#x27;)</span><br><span class="line">					&#123;						</span><br><span class="line">						P20_LED = 1;</span><br><span class="line">						ms_delay(1000) ;</span><br><span class="line">						P20_LED = 0;</span><br><span class="line">						flag=0; //自动</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			memset(Recive_table,&#x27;\0&#x27;,20);</span><br><span class="line">			Recive_state = 0;</span><br><span class="line">			ES=1;  //打开接收标志位</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">/******************************************************************</span><br><span class="line">函 数: void Uart_Interrupt() interrupt 4</span><br><span class="line">功 能: 串口中断函数,将收到的字符存到Recive_table[]数组中</span><br><span class="line">参 数: 无</span><br><span class="line">返回值: 无</span><br><span class="line">*******************************************************************/</span><br><span class="line">void Uart_Interrupt() interrupt 4         </span><br><span class="line">&#123;   </span><br><span class="line">	static char i=0;  //因为是一位一位接收，所以用static</span><br><span class="line">	if(RI==1)    </span><br><span class="line">	&#123;  </span><br><span class="line">		ES = 0;</span><br><span class="line">		RI=0;         </span><br><span class="line">		Recive_table[i]=SBUF;        </span><br><span class="line">		i++; </span><br><span class="line">		if((Recive_table[i-1] == &#x27;\n&#x27;))</span><br><span class="line">		&#123; </span><br><span class="line">			Recive_table[i]=&#x27;\0&#x27;;</span><br><span class="line">			i=0; </span><br><span class="line">			Recive_state = 1;</span><br><span class="line">		&#125;</span><br><span class="line">		ES = 1;      </span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	TI = 0;     </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">/******************************************************************</span><br><span class="line">函 数: void Uart_Init(void)</span><br><span class="line">功 能: 串口初始化，波特率为9600</span><br><span class="line">参 数: 无</span><br><span class="line">返回值: 无</span><br><span class="line">*******************************************************************/</span><br><span class="line">void Uart_Init(void)</span><br><span class="line">&#123;  </span><br><span class="line">	TMOD=0x20;</span><br><span class="line">	TH1=0xfD;</span><br><span class="line">	TL1=0xfD;</span><br><span class="line">	TR1=1;</span><br><span class="line">	REN=1;</span><br><span class="line">	SM0=0;</span><br><span class="line">	SM1=1;</span><br><span class="line">	EA=1;</span><br><span class="line">	ES=1;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">/******************************************************************</span><br><span class="line">函 数: void ms_delay(int t)</span><br><span class="line">功 能: 毫秒级延时</span><br><span class="line">参 数: 无</span><br><span class="line">返回值: 无</span><br><span class="line">*******************************************************************/</span><br><span class="line">void ms_delay(int t) </span><br><span class="line">&#123;  </span><br><span class="line">	int i,j; </span><br><span class="line">	for(i=t;i&gt;0;i--)   </span><br><span class="line">		for(j=110;j&gt;0;j--); </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">/******************************************************************</span><br><span class="line">函 数: void LED(void)</span><br><span class="line">功 能: 发送完命令后显示用的函数</span><br><span class="line">参 数: 无</span><br><span class="line">返回值: 无</span><br><span class="line">*******************************************************************/</span><br><span class="line">void LED(void)</span><br><span class="line">&#123;</span><br><span class="line">	P2 = 0;</span><br><span class="line">	ms_delay(100);</span><br><span class="line">	P2 = 0xff;</span><br><span class="line">	ms_delay(100);</span><br><span class="line">&#125;</span><br><span class="line">/******************************************************************</span><br><span class="line">函 数: void WIFI_Init(void)</span><br><span class="line">功 能: wifi初始化</span><br><span class="line">参 数: 无</span><br><span class="line">返回值: 无</span><br><span class="line">*******************************************************************/</span><br><span class="line">void WIFI_Init(void)</span><br><span class="line">&#123;</span><br><span class="line">	ES = 0;</span><br><span class="line">	TI = 1; </span><br><span class="line">	printf(&quot;AT+RST\r\n&quot;);</span><br><span class="line">	LED();</span><br><span class="line">	ms_delay(1000) ;</span><br><span class="line">	printf(&quot;AT+CWMODE=3\r\n&quot;);</span><br><span class="line">	LED();</span><br><span class="line">	ms_delay(1000) ;</span><br><span class="line">	printf(&quot;AT+CIPMUX=1\r\n&quot;);</span><br><span class="line">	LED(); </span><br><span class="line">	ms_delay(1000) ;</span><br><span class="line">	printf(&quot;AT+CIPSERVER=1,8080\r\n&quot;);        </span><br><span class="line">	LED();</span><br><span class="line">	ms_delay(1000) ;</span><br><span class="line">  printf(&quot;AT+CIOBAUD=9600\r\n&quot;);   // 设置与单片机一致的波特率     </span><br><span class="line">	LED();</span><br><span class="line">	ms_delay(1000);</span><br><span class="line">	while(!TI);</span><br><span class="line">	TI = 0;</span><br><span class="line">	ES = 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//向手机发送数据</span><br><span class="line">void sending(void) </span><br><span class="line">&#123;</span><br><span class="line">	ES = 0;</span><br><span class="line">	TI = 1; </span><br><span class="line">	printf(&quot;AT+CIPSTART=0,\&quot;TCP\&quot;,\&quot;192.168.4.2\&quot;,8080\r\n&quot;);	</span><br><span class="line">	ms_delay(1000) ;</span><br><span class="line">	printf(&quot;AT+CIPSEND=0,11\r\n&quot;);</span><br><span class="line">	ms_delay(1000) ;</span><br><span class="line">	printf(&quot;Humi:%d.%d \r\n&quot;,rec_dat[1],rec_dat[3]);</span><br><span class="line">	ms_delay(1000) ;</span><br><span class="line">	</span><br><span class="line">	while(!TI);</span><br><span class="line">	TI = 0;</span><br><span class="line">	ES = 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong><code>rec_dat[i]</code>中保存的是需要发送的数据。</strong>  </p>
+<hr>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>用手机连上WIFI，打开TCP助手，建立一个新连接，IP地址192.168.4.1，端口8080，如果发送一个1，TCP助手软件接收到一个发送过来设定的数值，那么连接建立成功，发送数据成立。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢投喂！！！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -245,16 +289,75 @@ var _hmt = _hmt || [];
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/02/AP_sendMessage/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/05/02/AP_sendMessage/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2022/04/26/AP_template/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Esp8266与51单片机的Ap模式配置教程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -269,866 +372,32 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-AP_template" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/26/AP_template/">Esp8266与51单片机的Ap模式配置教程</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/26/AP_template/" class="archive-article-date">
-  	<time datetime="2022-04-26T03:59:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>这是一个学弟问esp8266与51单片机连接然后通过手机来对单片机进行操作的配置问题，感觉发消息不方便贴代码和讲解，就干脆小写一篇教程了。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Esp8266</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Esp8266//" class="article-tag-list-link color3">Esp8266</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Esp8266/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/26/AP_template/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E4%B8%8E%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">准备与连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">发送代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">4.</span> <span class="toc-text">结论</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-MqttLightingServers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/17/MqttLightingServers/">基于Mqtt的城市智能路灯控制系统</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/17/MqttLightingServers/" class="archive-article-date">
-  	<time datetime="2022-02-17T06:49:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>这是一个城市智能路灯控制系统的设计，实现功能主要为光线充足时不亮灯，当光线不足时开始检测，如果有人或者有声音便亮起路灯，这是自动模式，设备可通过手机APP切换为手动模式，在手动模式下用户可通过手机APP来实现对路灯的操控。<br><strong>本项目本身逻辑比较简单，硬件部分也是很常见的设计</strong>，与之前做过的项目大同小异，本质上还是传感器采集信息然后单片机负责进行判断和开关电路。因此这个项目的重点其实在于<code>Mqtt</code>的使用，之前的几个物联网设计中，手机端的实现主要是依靠第三方的点灯科技的接口，这种方式实现联网终究<strong>可玩性还是太低了</strong>，况且对于一个硬件电子爱好者来说，实现物联网仅局限于云智能也太拉跨了，<strong>因此学习了<code>AndroidStudio</code>开发<code>App</code>从而实现Mqtt的通信协来控制设备实现物联网，我个人认为这一个流程的实现才是真正的物联网开发。</strong></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT，Mqtt</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Mqtt//" class="article-tag-list-link color5">Mqtt</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Mqtt/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Mqtt/IT/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/17/MqttLightingServers/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PaperManager" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/27/PaperManager/">基于esp8266的智能出纸器</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/27/PaperManager/" class="archive-article-date">
-  	<time datetime="2022-01-27T09:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>一个简单的出纸系统，esp8266的小实验，主要是深入了解下360舵机的原理，并尝试应用在了项目上，最重要的还是对点灯科技的加深了解，属实是懒人福音了。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/27/PaperManager/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-AgricultureMonitor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/23/AgricultureMonitor/">基于ESP8266的农业气象监测站</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/23/AgricultureMonitor/" class="archive-article-date">
-  	<time datetime="2022-01-23T11:01:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>经过一段时间对esp8266的了解和学习，尝试着做了一个esp8266的项目，是一个农业气象监测站，可以实时采集观测地的温湿度风速压强并显示在oled屏幕上，然后<strong>通过网络将数据传回用户<code>手机APP</code>，做到实时监测。</strong></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">esp8266</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/单片机设计/esp8266//" class="article-tag-list-link color3">esp8266</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/23/AgricultureMonitor/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ESP8266_template" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/15/ESP8266_template/">ESP8266的wifi连接模板代码</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/15/ESP8266_template/" class="archive-article-date">
-  	<time datetime="2022-01-15T04:56:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>这是一个ESP8266连接wifi的模板，几乎连接wifi都会用到这个代码，因此在这里做个记录。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ESP8266</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/单片机设计/ESP8266//" class="article-tag-list-link color3">ESP8266</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/15/ESP8266_template/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-BiZhangChe" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/14/BiZhangChe/">基于Arduino的智能避障小车的设计</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/14/BiZhangChe/" class="archive-article-date">
-  	<time datetime="2022-01-13T16:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>这是一个小巧简单的避障车的设计，也算是Arduino中比较火的项目了，试着学习了一下，通过项目来更深入的理解和应用Arduino。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/14/BiZhangChe/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Migration_Blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/13/Migration_Blog/">【学习记录】关于原博客向新电脑迁移的步骤</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/13/Migration_Blog/" class="archive-article-date">
-  	<time datetime="2022-01-13T13:37:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>没想到刚开始更新Blog没几天就遇到了需要向新电脑迁移的事情，索性记录下来，由于没怎么接触过前端，个人网站搭建的过程始终让我感到新奇，每天感觉都是在接触新的知识。一开始想要迁移的时候还挺迷茫的，感觉这个过程肯定会有很多坑，没想到最后以外的简单顺利。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/13/Migration_Blog/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ExpressageInfo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/12/ExpressageInfo/">基于stc89c51Rc的扫码取件设计</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/12/ExpressageInfo/" class="archive-article-date">
-  	<time datetime="2022-01-12T09:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>一种通过取件码快速获得快递位置的设计。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/12/ExpressageInfo/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MaikdownEdit" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/12/MaikdownEdit/">【学习记录】MarkDown语法的学习与整理</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/12/MaikdownEdit/" class="archive-article-date">
-  	<time datetime="2022-01-12T06:36:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>接触了一小段时间的Markdown文件的编写了，深感他能被众人所推崇的确有其独特之处，因此开一篇博客记录下markdown常用的一些有语法，既是一种整理也是一个加深印象和巩固的过程。<br>感谢菜鸟教程的详细总结，省去了我不少时间，这里只介绍我常用到的，如果需要请点击链接来更全面的学习<a target="_blank" rel="noopener" href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟的Markdown教程</a>。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/杂项//" class="article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/12/MaikdownEdit/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1151,8 +420,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
