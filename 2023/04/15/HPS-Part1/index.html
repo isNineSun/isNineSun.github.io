@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>HPS_Part1 | isNineSun&#39;s Blog</title>
+  <title>惯性人体姿态解算——动捕设备的实现 Part1 | isNineSun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="HPS_Part1">
-<meta property="og:url" content="http://yoursite.com/2023/07/02/HPS-Part1/index.html">
+  <meta name="description" content="摘要最近比较沉迷虚拟主播，用来打发时间还是挺有意思的，一些3D势虚拟主播不可避免的就是会使用到动作捕捉设备，产生了一些兴趣，想简单实现一下。现在市面上大多数的动补方案是光学动补、惯性动补和混合动补三种方式，光学动补精度高，但是成本也高，而且捕捉质量与摄像头帧率和数量直接相关，惯性动补成本相对比较低，但是会不可避免的有各种漂移问题，成品商业方案大多是最后一种，是光学和惯性结合起来去做拟合，从而达成比">
+<meta property="og:type" content="article">
+<meta property="og:title" content="惯性人体姿态解算——动捕设备的实现 Part1">
+<meta property="og:url" content="http://yoursite.com/2023/04/15/HPS-Part1/index.html">
 <meta property="og:site_name" content="isNineSun&#39;s Blog">
+<meta property="og:description" content="摘要最近比较沉迷虚拟主播，用来打发时间还是挺有意思的，一些3D势虚拟主播不可避免的就是会使用到动作捕捉设备，产生了一些兴趣，想简单实现一下。现在市面上大多数的动补方案是光学动补、惯性动补和混合动补三种方式，光学动补精度高，但是成本也高，而且捕捉质量与摄像头帧率和数量直接相关，惯性动补成本相对比较低，但是会不可避免的有各种漂移问题，成品商业方案大多是最后一种，是光学和惯性结合起来去做拟合，从而达成比">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-07-02T10:15:23.000Z">
-<meta property="article:modified_time" content="2023-07-02T10:15:23.654Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/isNineSun/img_repository/main/%24MJ%7BUE%2403%7DLU1%25THN1PR5%5DH.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/isNineSun/img_repository/main/3D.png">
+<meta property="article:published_time" content="2023-04-15T09:58:04.000Z">
+<meta property="article:modified_time" content="2023-07-02T10:09:59.166Z">
 <meta property="article:author" content="NineSun">
+<meta property="article:tag" content="单片机设计">
+<meta property="article:tag" content="IT">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/isNineSun/img_repository/main/%24MJ%7BUE%2403%7DLU1%25THN1PR5%5DH.png">
   
     <link rel="alternative" href="/atom.xml" title="isNineSun&#39;s Blog" type="application/atom+xml">
   
@@ -190,20 +197,29 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      HPS_Part1
+      惯性人体姿态解算——动捕设备的实现 Part1
     </h1>
   
 
         
-        <a href="/2023/07/02/HPS-Part1/" class="archive-article-date">
-  	<time datetime="2023-07-02T10:15:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-02</time>
+        <a href="/2023/04/15/HPS-Part1/" class="archive-article-date">
+  	<time datetime="2023-04-15T09:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>最近比较沉迷虚拟主播，用来打发时间还是挺有意思的，一些3D势虚拟主播不可避免的就是会使用到动作捕捉设备，产生了一些兴趣，想简单实现一下。现在市面上大多数的动补方案是光学动补、惯性动补和混合动补三种方式，光学动补精度高，但是成本也高，而且捕捉质量与摄像头帧率和数量直接相关，惯性动补成本相对比较低，但是会不可避免的有各种漂移问题，成品商业方案大多是最后一种，是光学和惯性结合起来去做拟合，从而达成比较好的稳定性和精度。光学动补现在已经有很多商业公司开放付费使用的服务了，比如小K动补之类的，所以本文就 <strong>不介绍光捕，而实现一个惯性动补</strong>。    </p>
+<span id="more"></span>
+
+<h2 id="1-设计思路-amp-硬件选择"><a href="#1-设计思路-amp-硬件选择" class="headerlink" title="1.设计思路&amp;硬件选择"></a>1.设计思路&amp;硬件选择</h2><p>我希望动捕设备最好能无线连接PC，所以esp32就成了首选，不用再多加一个透传模块，而且价格也便宜，另外就是IMU的选型，这个的选择项就非常多了，一些精度高的IMU价格非常夸张，所以这里就使用最常见的六轴IMU MPU6050，物美价廉，漂移和噪声问题确定很大，但是可以放在软件算法里去尽量做优化，不过调过姿态控制的都知道，六轴传感器的偏航角几乎是不可用的，这是六轴传感器工作机制导致的，只能用角速度去积分获取偏航角，然后一定程度上通过横滚角和俯仰角去矫正，理想的状态下，静态响应还是凑合的，但是动态响应几乎就是灾难，在动捕这个领域，这显然是不合适的，因此为了获得更为准确的yaw角度，我选择添加一个磁力计，HMC5883L，虽然磁力计也同样会有被环境干扰问题，比如周围的磁场，但是它的yaw角很大程度上至少是可信的，环境干扰也可以放在软件算法里面去尽量矫正。<br>所以最后确定的下位机方案就是使用esp32+mpu6050+HMC5883L,成本大概30块钱左右，然后关于上位机的选择，因为这次涉及到3D模型，当然是请出老朋友unity，下位机采集解算出来的欧拉角直接通过wifi与PC走UDP（延时小）通信传输数据，然后再在PC端根据欧拉角还原人体姿态，大致思路就是这个样子。    </p>
+<hr>
+<h2 id="2-硬件设计"><a href="#2-硬件设计" class="headerlink" title="2.硬件设计"></a>2.硬件设计</h2><p>硬件方面IMU直接用的是模块，因为裸片买不起（悲），然后尺寸尽可能小巧，没有画成两面板是因为就算把尺寸再画小一点，电池容量也可能不太够了，索性定在了45mm * 45mm的尺寸上了能一面画完，能放一个800mah的锂电池，项目工程都再立创开源了，以下是链接：   </p>
+<h3 id="PCB-Layout"><a href="#PCB-Layout" class="headerlink" title="PCB Layout"></a>PCB Layout</h3><p><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/%24MJ%7BUE%2403%7DLU1%25THN1PR5%5DH.png">    </p>
+<h3 id="3D渲染图"><a href="#3D渲染图" class="headerlink" title="3D渲染图"></a>3D渲染图</h3><p><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/3D.png">    </p>
+<p>//TODO：</p>
+
       
 
       
@@ -242,7 +258,37 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">单片机设计</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/单片机设计//" class="article-tag-list-link color1">单片机设计</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -292,7 +338,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2023/07/02/HPS-Part1/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2023/04/15/HPS-Part1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -335,7 +381,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF-amp-%E7%A1%AC%E4%BB%B6%E9%80%89%E6%8B%A9"><span class="toc-number">2.</span> <span class="toc-text">1.设计思路&amp;硬件选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">2.硬件设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PCB-Layout"><span class="toc-number">3.1.</span> <span class="toc-text">PCB Layout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3D%E6%B8%B2%E6%9F%93%E5%9B%BE"><span class="toc-number">3.2.</span> <span class="toc-text">3D渲染图</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -447,11 +493,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Esp8266</a>
+                <a href="javascript:void(0)" class="js-tag color3">IT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IT</a>
+                <a href="javascript:void(0)" class="js-tag color3">Esp8266</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2023/07/02/HPS-Part1/</loc>
+    <loc>http://yoursite.com/2023/04/15/HPS-Part1/</loc>
     
     <lastmod>2023-07-02</lastmod>
     
@@ -144,14 +144,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/Esp8266/</loc>
+    <loc>http://yoursite.com/tags/IT/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/IT/</loc>
+    <loc>http://yoursite.com/tags/Esp8266/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -209,13 +209,6 @@
 
   
   <url>
-    <loc>http://yoursite.com/categories/Esp8266/</loc>
-    <lastmod>2023-07-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/categories/IT/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -223,7 +216,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/Esp8266/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/</loc>
+    <loc>http://yoursite.com/categories/Esp8266/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -231,6 +224,13 @@
   
   <url>
     <loc>http://yoursite.com/categories/IT/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2023-07-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/Esp8266/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -258,7 +258,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/Mqtt/</loc>
+    <loc>http://yoursite.com/categories/IT/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/ESP8266/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -279,7 +279,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/IT/%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E8%AE%A1/ESP8266/</loc>
+    <loc>http://yoursite.com/categories/Mqtt/</loc>
     <lastmod>2023-07-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
