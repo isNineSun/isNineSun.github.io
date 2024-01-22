@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-01-11T13:27:52.957Z</updated>
+  <updated>2024-01-22T12:57:43.085Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>惯性人体姿态解算——动捕上位机的实现 Part2</title>
+    <link href="http://yoursite.com/2024/01/22/HPS-Part2/"/>
+    <id>http://yoursite.com/2024/01/22/HPS-Part2/</id>
+    <published>2024-01-22T09:58:04.000Z</published>
+    <updated>2024-01-22T12:57:43.085Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-设计思路"><a href="#1-设计思路" class="headerlink" title="1.设计思路"></a>1.设计思路</h2><p>通信方面没有太多要说的，是做了一个UDP的服务器用来接收设备的广播数据，然后将固定格式的数据进行解析，得到各个肢体的三轴值数据。<br>人物模型采用的是通过Vroid生成的模型，骨骼使用mixamo进行绑定，并在Unity中做人形骨骼绑定。得益于我设备是每个关节（肢体）可以分别获取Roll、Pitch和Yaw角，因此我可以直接进行正向动力学，即将获取到的肢体的角度偏转值直接赋值给上位机中的人体模型。因此，控制人物模型的核心代码其实很短：</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将三轴值转化为Quaternion</span></span><br><span class="line">armRotation = UnityEngine.Quaternion.Euler(roll, yaw, -pitch);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将旋转值应用在模型骨骼上</span></span><br><span class="line">body.rotation = armRotation;</span><br></pre></td></tr></table></figure><h2 id="2-模型初始状态问题"><a href="#2-模型初始状态问题" class="headerlink" title="2.模型初始状态问题"></a>2.模型初始状态问题</h2><p>与直观的欧拉角不同，即使传入的初始状态都是（0，0，0），在头部应用的时候还没有问题，但是应用在模型手臂会导致手臂初始状态朝上而不是T-Pose，因此需要给手臂加一个初始状态矫正的Offset：</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将三轴值转化为Quaternion</span></span><br><span class="line">armRotation = UnityEngine.Quaternion.Euler(roll, yaw, -pitch);</span><br><span class="line"><span class="comment">//初始状态矫正</span></span><br><span class="line">armRotationOffset = UnityEngine.Quaternion.Euler(XRotationOffset, YRotationOffset, ZRotationOffset);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将旋转值应用在模型骨骼上</span></span><br><span class="line">body.rotation = armRotation * armRotationOffset;</span><br></pre></td></tr></table></figure><h3 id="引入矫正前"><a href="#引入矫正前" class="headerlink" title="引入矫正前"></a>引入矫正前</h3><p><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/NoAdjust.jpg">    </p><h3 id="引入矫正后"><a href="#引入矫正后" class="headerlink" title="引入矫正后"></a>引入矫正后</h3><p><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/Adjust.jpg">    </p><h2 id="3-最终效果"><a href="#3-最终效果" class="headerlink" title="3.最终效果"></a>3.最终效果</h2><p>最终效果可以点击链接查看视频–&gt; <a href="https://github.com/isNineSun/Human-Pose-Estimation---Motion-Capture-Device/assets/42261713/1a74626f-e1af-4e56-bceb-0fe2316b3c24">https://github.com/isNineSun/Human-Pose-Estimation---Motion-Capture-Device/assets/42261713/1a74626f-e1af-4e56-bceb-0fe2316b3c24</a>    </p><h2 id="4-最后"><a href="#4-最后" class="headerlink" title="4.最后"></a>4.最后</h2><p>还真是迟来的Part2了，生活中有不少的事情这个就一直搁置下来了，最后实现的效果也并不能说尽善尽美了，还有很多遗憾和不足，希望能在之后的项目中注意并避免，能够弥补这次的些许遗憾。<br>项目软硬件皆以开源，Part1文章中有所有的开源链接–&gt;<a href="https://isninesun.github.io/2023/04/15/HPS-Part1/">惯性人体姿态解算——动捕设备的实现 Part1</a>，本上位机实现也在GitHub上开源了–&gt;<a href="https://github.com/isNineSun/Motion-Capture-Host-Software.git">Motion-Capture-Host-Software</a></p>]]></content>
+    
+    
+    <summary type="html">这是一个与之前惯性动捕硬件设计配套的上位机软件，采用Unity开发，通过传统的正向动力学的方式去进行人体的姿态还原。</summary>
+    
+    
+    
+    <category term="设计开发" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Unity" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/Unity/"/>
+    
+    
+    <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
+    
+    <category term="惯性动补" scheme="http://yoursite.com/tags/%E6%83%AF%E6%80%A7%E5%8A%A8%E8%A1%A5/"/>
+    
+    <category term="姿态解算" scheme="http://yoursite.com/tags/%E5%A7%BF%E6%80%81%E8%A7%A3%E7%AE%97/"/>
+    
+  </entry>
   
   <entry>
     <title>【学习记录】记录一个简单的WPF应用抽屉的实现</title>
@@ -119,11 +146,11 @@
     
     <category term="嵌入式开发" scheme="http://yoursite.com/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/"/>
     
-    <category term="ESP32" scheme="http://yoursite.com/tags/ESP32/"/>
-    
     <category term="惯性动补" scheme="http://yoursite.com/tags/%E6%83%AF%E6%80%A7%E5%8A%A8%E8%A1%A5/"/>
     
     <category term="姿态解算" scheme="http://yoursite.com/tags/%E5%A7%BF%E6%80%81%E8%A7%A3%E7%AE%97/"/>
+    
+    <category term="ESP32" scheme="http://yoursite.com/tags/ESP32/"/>
     
   </entry>
   
@@ -146,13 +173,13 @@
     <category term="Unity" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/Unity/"/>
     
     
+    <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
+    
     <category term="Unity开发" scheme="http://yoursite.com/tags/Unity%E5%BC%80%E5%8F%91/"/>
     
     <category term="游戏开发" scheme="http://yoursite.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
     <category term="Vroid" scheme="http://yoursite.com/tags/Vroid/"/>
-    
-    <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
     
   </entry>
   
