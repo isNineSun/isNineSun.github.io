@@ -234,6 +234,32 @@
   </entry>
   
   <entry>
+    <title>ManaPixel - 一键超分辨工具</title>
+    <link href="http://yoursite.com/2022/02/01/ManaPixel/"/>
+    <id>http://yoursite.com/2022/02/01/ManaPixel/</id>
+    <published>2022-02-01T04:01:04.000Z</published>
+    <updated>2024-02-02T04:37:09.491Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ManaPixel-一键超分辨工具"><a href="#ManaPixel-一键超分辨工具" class="headerlink" title="ManaPixel-一键超分辨工具"></a>ManaPixel-一键超分辨工具</h1><p><img src="https://img.shields.io/github/repo-size/isNinesun/MANAPixel" alt="GitHub repo size"><br><img src="https://img.shields.io/github/downloads/isNineSun/ManaPixel/total" alt="GitHub Downloads (all assets, all releases)"><br><img src="https://img.shields.io/github/issues/isNineSun/ManaPixel" alt="GitHub issues"><br><img src="https://img.shields.io/github/license/isNinesun/MANAPixel" alt="GitHub License"></p><h2 id="✨前言"><a href="#✨前言" class="headerlink" title="✨前言"></a>✨前言</h2><p>现在网上有很多用来超分辨率的工具，但是有的收费，有的有功能繁杂很多用不到且导致启动速度慢，很多时候我们自己用的时候并不太关注大多参数，只是想快速转个高清图片或者视频，看到一张好看的1080P图片想直接转4K拿来做壁纸而已，因此就有了这个工具的诞生，工具的初衷就是快捷简单，<strong>即使不进行任何配置</strong>，只要拖入图片，即可一键超分辨率且质量在线，当然，如果你有更多的需求，工具也提供进阶的高级配置，可以手动调整！    </p><h2 id="项目开源链接"><a href="#项目开源链接" class="headerlink" title="项目开源链接"></a>项目开源链接</h2><p>本项目基于<a href="https://github.com/xinntao/Real-ESRGAN">Real-ESRGAN</a>进行开发，感谢这个优秀的开源项目。</p><p>本项目Github开源地址：<a href="https://github.com/isNineSun/ManaPixel">https://github.com/isNineSun/ManaPixel</a></p><h2 id="👜获取软件"><a href="#👜获取软件" class="headerlink" title="👜获取软件"></a>👜获取软件</h2><p>下载<a href="https://github.com/isNineSun/ManaPixel/releases">Release界面</a>中Assets下的ManaPixel.rar，解压后双击exe即可使用，无需安装与部署。<br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/29ccf97da91069540b3d080f0fef4c7a.png">    </p><h2 id="🚀快速开始"><a href="#🚀快速开始" class="headerlink" title="🚀快速开始"></a>🚀快速开始</h2><h3 id="👉单张图片进行解析"><a href="#👉单张图片进行解析" class="headerlink" title="👉单张图片进行解析"></a>👉单张图片进行解析</h3><ol><li>拖入图片至蓝色框内。    </li><li>点击“MANA!”进行超分！    </li><li>等待超分完成可点击“打开文件夹”打开超分辨率输出的文件夹（不进行配置的情况下输出至输入文件同文件夹）。  </li></ol><p><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/PixPin_2024-01-25_23-42-47.png">    </p><h4 id="🖼️动图演示（-gt-17MB）"><a href="#🖼️动图演示（-gt-17MB）" class="headerlink" title="🖼️动图演示（&gt;17MB）"></a>🖼️动图演示（&gt;17MB）</h4><p><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/PixPin_2024-01-27_00-43-16.gif">    </p><h3 id="👉图片批量进行解析"><a href="#👉图片批量进行解析" class="headerlink" title="👉图片批量进行解析"></a>👉图片批量进行解析</h3><ol><li>拖入输入文件夹至蓝色框内。    </li><li>拖入输出文件夹至黄色框内。    </li><li>点击“MANA!”进行超分！    </li><li>等待超分完成可点击“打开文件夹”打开超分辨率输出的文件夹。     </li></ol><h4 id="🖼️动图演示"><a href="#🖼️动图演示" class="headerlink" title="🖼️动图演示"></a>🖼️动图演示</h4><p><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/PixPin_2024-02-02_00-55-26.gif"></p><h2 id="😎进阶配置"><a href="#😎进阶配置" class="headerlink" title="😎进阶配置"></a>😎进阶配置</h2><p>本章节将进行软件界面可配置参数的介绍。    </p><h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><p>通过下拉框选择超分辨率模型，默认为默认为realesrgan-x4plus。</p><ul><li>realesrgan-x4plus：默认模型。</li><li>realesrnet-x4plus</li><li>realesrgan-x4plus-anime：针对动漫插画图像优化，生成图片有更小的体积。</li><li>realesr-animevideov3：针对动漫视频（后续更新计划）。    <h3 id="缩放比例"><a href="#缩放比例" class="headerlink" title="缩放比例"></a>缩放比例</h3>调整模型输出的缩放比例，默认为4。<h3 id="GPU选择"><a href="#GPU选择" class="headerlink" title="GPU选择"></a>GPU选择</h3>如果电脑有多个GPU的话可以进行GPU的选择，默认会自动选择GPU进行超分。<h3 id="TTA模式"><a href="#TTA模式" class="headerlink" title="TTA模式"></a>TTA模式</h3></li><li>*CharGpt**：<blockquote><p>TTA 是一种在模型推理时进行数据增强的技术，以提高模型的性能。具体来说，在 TTA 模式下，模型对输入图像进行多次处理，每次采用不同的数据增强方法（例如旋转、翻转、缩放等），然后对这些处理后的图像进行预测。最终的预测结果可能是多次预测结果的平均值或投票结果。<br>使用 TTA 可以提高模型的鲁棒性，因为它考虑了多个输入变换，有助于减轻模型对输入变化的敏感性。然而，这通常会导致推理时间的增加，因为需要对每个图像进行多次处理。</p></blockquote></li></ul><p>默认关闭，可以选择打开。    </p><h2 id="🤓高级配置"><a href="#🤓高级配置" class="headerlink" title="🤓高级配置"></a>🤓高级配置</h2><p>高级功能正在开发中（施工中…）    </p><h2 id="🔊更新计划"><a href="#🔊更新计划" class="headerlink" title="🔊更新计划"></a>🔊更新计划</h2><ul><li>更多高级配置项目的上线，为用户提供更多的选择；</li><li>历史输出文件夹路径的记录功能；</li><li>配置项的保存、导入和导出功能；</li><li>视频超分辨率功能的支持！</li></ul><h2 id="💻写在最后"><a href="#💻写在最后" class="headerlink" title="💻写在最后"></a>💻写在最后</h2><p>非常欢迎，也非常希望使用的大家能够给我提出更多的建议来让这款工具更好用，也希望用过这款工具感觉还不错的朋友帮忙给仓库点个⭐Star，谢谢！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;ManaPixel-一键超分辨工具&quot;&gt;&lt;a href=&quot;#ManaPixel-一键超分辨工具&quot; class=&quot;headerlink&quot; title=&quot;ManaPixel-一键超分辨工具&quot;&gt;&lt;/a&gt;ManaPixel-一键超分辨工具&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;</summary>
+      
+    
+    
+    
+    <category term="设计开发" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="WPF" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/WPF/"/>
+    
+    
+    <category term="桌面应用开发" scheme="http://yoursite.com/tags/%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>基于ESP的农业气象监测站</title>
     <link href="http://yoursite.com/2022/01/23/AgricultureMonitor/"/>
     <id>http://yoursite.com/2022/01/23/AgricultureMonitor/</id>
