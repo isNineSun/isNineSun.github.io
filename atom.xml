@@ -199,13 +199,13 @@
     <category term="Unity" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/Unity/"/>
     
     
-    <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
-    
     <category term="Unity开发" scheme="http://yoursite.com/tags/Unity%E5%BC%80%E5%8F%91/"/>
     
     <category term="游戏开发" scheme="http://yoursite.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
     
     <category term="Vroid" scheme="http://yoursite.com/tags/Vroid/"/>
+    
+    <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
     
   </entry>
   
