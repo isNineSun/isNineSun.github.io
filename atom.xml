@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-02-02T04:45:09.422Z</updated>
+  <updated>2024-03-02T13:32:59.299Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>折腾一下私有Git仓库的部署----Gitea</title>
+    <link href="http://yoursite.com/2024/03/02/Local_GIT_RepositoryConfiguration/"/>
+    <id>http://yoursite.com/2024/03/02/Local_GIT_RepositoryConfiguration/</id>
+    <published>2024-03-02T12:30:04.000Z</published>
+    <updated>2024-03-02T13:32:59.299Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-说在前面"><a href="#1-说在前面" class="headerlink" title="1.说在前面"></a>1.说在前面</h2><p>Git私有库的搭建本身其实并不算什么困难的事情，但是在部署的过程中遇到的一些ssh问题确实让我踩坑花了点时间，趁着现在还记得清楚，这篇文章除了打算记录私有Git本地仓库的搭建，更是要记录一些ssh相关的的配置。<br>这次的本地Git搭建是基于Gitea来做的，作为一个轻量的DevOps平台，Gitea占用资源少，在用不到GitLab完整功能的情形下，很好用，也比原生Git更易于管理。<br>搭建所在的系统是Linux，用的是Unraid系统，其他系统应该也是大差不差。    </p><hr><h2 id="2-Gitea安装部署"><a href="#2-Gitea安装部署" class="headerlink" title="2.Gitea安装部署"></a>2.Gitea安装部署</h2><p>Gitea的部署十分简单，这里以在Unraid中使用docker的方式部署为例子来说明。<br>首先是Docker镜像的安装，进入Unraid的APP界面，在CA中搜索Gitea，选取一个版本后install即可，docker需要配置的东西并不多，需要注意要将SSH端口改成22以外的，因为22端口大多被屏蔽了，这里改成3022。<br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/31c85d5da5319744d4a470112d054267.png">    </p><h2 id="随后打开Gitea的WebUI界面，然后按照安装引导进行仓库的配置，因为配置时候没有截图，所以放上网上的配置连接：Gitea配置"><a href="#随后打开Gitea的WebUI界面，然后按照安装引导进行仓库的配置，因为配置时候没有截图，所以放上网上的配置连接：Gitea配置" class="headerlink" title="随后打开Gitea的WebUI界面，然后按照安装引导进行仓库的配置，因为配置时候没有截图，所以放上网上的配置连接：Gitea配置    "></a>随后打开Gitea的WebUI界面，然后按照安装引导进行仓库的配置，因为配置时候没有截图，所以放上网上的配置连接：<a href="https://post.smzdm.com/p/a0qplmr0/">Gitea配置</a>    </h2><h2 id="3-SSH配置"><a href="#3-SSH配置" class="headerlink" title="3.SSH配置"></a>3.SSH配置</h2><p>首先，使用ssh的前提是需要在Gitea上配置好SSH密钥访问。<br>在客户端生成ssh公钥，windows的公钥一般在<code>C:\Users\27697\.ssh</code>文件夹下面，<code>id_rsa.pub</code>文件就是了，用记事本打开就能看见ssh公钥，然后Gitea的“设置-&gt;SSH/GPG密钥”中新增一个ssh密钥，将key复制进去即可。<br>更详细的SSH公钥生成和配置在这里不多做赘述，大体与Github的设置一致，两者可以用同一个ssh key不需要分开生成。<br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/59900a33563b77fb49e2a5f6287cbee8.png"><br>然后是这次搭建踩坑的第一个地方，首先在Gitea创建一个空仓库，仓库里面随便放点什么东西，Gitea仓库页面跟Github一样，提供了Code的Clone访问链接，但是ssh链接给的是：<code>ssh://git@[Server-IP]:3022/[User]/[Repository].git</code>,且先不说<code>ssh://</code>的前缀很多余的问题，实际上直接去拿<code>git@[Server-IP]:3022/[User]/[Repository].git</code>Clone也是拉不到代码的，因为正确的格式应该是<code>git@[Server-IP]:[User]/[Repository].git</code>，所以完整正确的ssh拉取的代码应该是：    </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@[Server-IP]:[User]/[Repository].git</span><br></pre></td></tr></table></figure><p>另外，遇到的另一个问题是，用http的方式去clone Gitea仓库中的东西是没问题的：    </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone http://[Server-IP]:3000/[User]/[Repository].git</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Cloning into &#x27;[Repository]&#x27;...</span><br><span class="line">remote: Enumerating objects: 7412, done.</span><br><span class="line">remote: Counting objects: 100% (7412/7412), done.</span><br><span class="line">remote: Compressing objects: 100% (1076/1076), done.</span><br><span class="line">remote: Total 7412 (delta 3240), reused 7412 (delta 3240), pack-reused 0Receivin</span><br><span class="line"></span><br><span class="line">Receiving objects: 100% (7412/7412), 3.19 MiB | 57.29 MiB/s, done.</span><br><span class="line">Resolving deltas: 100% (3240/3240), done.</span><br></pre></td></tr></table></figure><p>但是如果说用SSH的方式去拉取仓库，就会出现问题网络问题，要么是链接不到仓库，要么就是端口问题，这是因为客户端（本机）ssh还需要配置，我是在windows环境下进行配置的，进入<code>C:\Users\27697\.ssh</code>，找到Config文件，如果没有就手动创建一个，并进行以下配置：    </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Host [Server-IP]</span><br><span class="line">  HostName [Server-IP]</span><br><span class="line">  User git</span><br><span class="line">  IdentityFile /c/Users/27697/.ssh/id_rsa ##指向ssh key文件</span><br><span class="line">  IdentitiesOnly yes</span><br><span class="line"></span><br><span class="line">  ## 配置成之前设置的容器ssh映射端口</span><br><span class="line">  Port 3022</span><br></pre></td></tr></table></figure><p>这样，就可以愉快的使用ssh来拉取私有库的Gitea代码了！</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> git@[Server-IP]:[User]/[Repository].git</span></span><br><span class="line">Cloning into &#x27;[Repository]&#x27;...</span><br><span class="line">remote: Enumerating objects: 7412, done.</span><br><span class="line">remote: Counting objects: 100% (7412/7412), done.</span><br><span class="line">remote: Compressing objects: 100% (1076/1076), done.</span><br><span class="line">remote: Total 7412 (delta 3240), reused 7412 (delta 3240), pack-reused 0</span><br><span class="line">g objects:  89% (6597/7412)</span><br><span class="line">Receiving objects: 100% (7412/7412), 3.19 MiB | 15.40 MiB/s, done.</span><br><span class="line">Resolving deltas: 100% (3240/3240), done.</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">Git私有库的搭建本身其实并不算什么困难的事情，但是在部署的过程中遇到的一些ssh问题确实让我踩坑花了点时间，趁着现在还记得清楚，这篇文章除了打算记录私有Git本地仓库的搭建，更是要记录一些ssh相关的的配置。</summary>
+    
+    
+    
+    <category term="学习记录" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    <category term="Git" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/Git/"/>
+    
+    
+    <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+    <category term="折腾" scheme="http://yoursite.com/tags/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="私有仓库" scheme="http://yoursite.com/tags/%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93/"/>
+    
+    <category term="NAS" scheme="http://yoursite.com/tags/NAS/"/>
+    
+    <category term="服务器" scheme="http://yoursite.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="SSH" scheme="http://yoursite.com/tags/SSH/"/>
+    
+  </entry>
   
   <entry>
     <title>ManaPixel - 一键超分辨工具</title>
@@ -61,11 +94,11 @@
     <category term="Unity" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/Unity/"/>
     
     
-    <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
-    
     <category term="惯性动补" scheme="http://yoursite.com/tags/%E6%83%AF%E6%80%A7%E5%8A%A8%E8%A1%A5/"/>
     
     <category term="姿态解算" scheme="http://yoursite.com/tags/%E5%A7%BF%E6%80%81%E8%A7%A3%E7%AE%97/"/>
+    
+    <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
     
   </entry>
   
@@ -172,11 +205,11 @@
     
     <category term="嵌入式开发" scheme="http://yoursite.com/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/"/>
     
+    <category term="ESP32" scheme="http://yoursite.com/tags/ESP32/"/>
+    
     <category term="惯性动补" scheme="http://yoursite.com/tags/%E6%83%AF%E6%80%A7%E5%8A%A8%E8%A1%A5/"/>
     
     <category term="姿态解算" scheme="http://yoursite.com/tags/%E5%A7%BF%E6%80%81%E8%A7%A3%E7%AE%97/"/>
-    
-    <category term="ESP32" scheme="http://yoursite.com/tags/ESP32/"/>
     
   </entry>
   
