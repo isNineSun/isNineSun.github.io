@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-03-02T13:32:59.299Z</updated>
+  <updated>2024-04-22T15:20:50.945Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2024/04/22/Esp32ParseChinsesFilePath/"/>
+    <id>http://yoursite.com/2024/04/22/Esp32ParseChinsesFilePath/</id>
+    <published>2024-04-22T15:13:04.000Z</published>
+    <updated>2024-04-22T15:20:50.945Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="关于如何在ESP32中解析包含中文路径的文件"><a href="#关于如何在ESP32中解析包含中文路径的文件" class="headerlink" title="关于如何在ESP32中解析包含中文路径的文件"></a>关于如何在ESP32中解析包含中文路径的文件</h2><p>使用场景是ESP32挂载的SD卡中有一个文件处在包含中文的路径下面，使用fopen打不开，网上查了很多东西，又是转宽字符又是说用“_wopen”，问题都没解决，结果今天看到一篇帖子，其中有提到关于esp32编码的问题：<br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/3e99ad6be68f9e740c72f3192072324d.png"><br><strong>于是尝试了一下，将menuconfig中Component config →FAT Filesystem support里面的API character encoding 更改为utf-8，结果直接就可以正常打开中文路径的文件！</strong> 记录一下</p>]]></content>
+    
+    
+    <summary type="html">关于如何在esp-idf中解析esp32设备的中文路径踩了一些坑</summary>
+    
+    
+    
+    <category term="学习记录" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    <category term="一些踩坑" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E4%B8%80%E4%BA%9B%E8%B8%A9%E5%9D%91/"/>
+    
+    
+    <category term="ESP32" scheme="http://yoursite.com/tags/ESP32/"/>
+    
+  </entry>
   
   <entry>
     <title>折腾一下私有Git仓库的部署----Gitea</title>
@@ -94,11 +117,11 @@
     <category term="Unity" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/Unity/"/>
     
     
+    <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
+    
     <category term="惯性动补" scheme="http://yoursite.com/tags/%E6%83%AF%E6%80%A7%E5%8A%A8%E8%A1%A5/"/>
     
     <category term="姿态解算" scheme="http://yoursite.com/tags/%E5%A7%BF%E6%80%81%E8%A7%A3%E7%AE%97/"/>
-    
-    <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
     
   </entry>
   
