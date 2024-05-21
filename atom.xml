@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-04-22T15:27:24.851Z</updated>
+  <updated>2024-05-21T17:18:06.344Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【学习记录】ESP32模块如何使能PSRAM</title>
+    <link href="http://yoursite.com/2024/05/22/ESP32_Psram_Enable/"/>
+    <id>http://yoursite.com/2024/05/22/ESP32_Psram_Enable/</id>
+    <published>2024-05-21T16:55:04.000Z</published>
+    <updated>2024-05-21T17:18:06.344Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-摘要"><a href="#1-摘要" class="headerlink" title="1.摘要"></a>1.摘要</h2><p>记录一下如何打开并使用ESP32的PSRAM，以及一些设置的注意事项。首先贴上Espressif乐鑫官方的关于PSRAM的wiki页面：<a href="https://docs.espressif.com/projects/espressif-esp-faq/zh_CN/latest/software-framework/storage/psram.html?highlight=psram">使用 ESP32 模组</a>    </p><h2 id="2-实际操作"><a href="#2-实际操作" class="headerlink" title="2.实际操作"></a>2.实际操作</h2><p>实际操作并不复杂，如果是使用idf.py，那么需要先在 <code>make menuconfig</code> 中配置开启 PSRAM 功能，以便正确启用和配置 PSRAM。由于我是在VSCODE中操作的，有个更直观的可视化界面，因此本文以VSCODE中的esp-idf menuconfig为例，实际两者操作应该大同小异。<br>不同模块的配置应该会有些微的差异，本文以ESP32-S3 N8R8为例。以下为总的配置：<br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/d1a10b976d0d3fd8600c6a52ddaa4972.png">    </p><h2 id="3-需要注意的配置"><a href="#3-需要注意的配置" class="headerlink" title="3.需要注意的配置"></a>3.需要注意的配置</h2><p>勾选<code>Support for external, SPI-connected RAM</code>之后，就会出现更多关于psram的配置选项，下面列出几个认为比较重要的配置：    </p><ul><li><p>Mode (QUAD/OCT) of SPI RAM chip in use    </p><ul><li>QUAD 模式：该模式使用 4 条数据线进行并行数据传输。这是最常用的模式，兼顾了速度和复杂性。    </li><li>OCT 模式：该模式使用 8 条数据线进行并行数据传输，相比 QUAD 模式有更高的数据传输速率，但通常需要更复杂的硬件支持。    </li></ul></li><li><p>Type of SPIRAM chip in use<br>这里选择自动检测即可，如果确实没检测到，也可以尝试更换。    </p></li><li><p><strong>Set RAM clock speed</strong><br><strong>这里比较重要，该选项应该与Flash SPI中的时钟保持一致</strong><br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/d5cf877d04c553a9b368c97a163963be.png">    </p></li><li><p>SPI RAM access method<br>这个配置涉及到 ESP32 中的 SPI RAM 访问方法的设置。让我们逐个解释三种模式：</p><ul><li><p>Make RAM allocatable using malloc() as well:<br>这种模式允许将 SPI RAM 集成到系统的内存分配机制中，使得可以通过标准的 malloc() 函数来分配 SPI RAM 的内存。在这种模式下，ESP32 的堆内存中的一部分将被用作 SPI RAM，因此可以使用 malloc() 来动态分配 SPI RAM 的内存。这使得编程变得更加简单，因为可以使用标准的内存分配函数来管理 SPI RAM 的内存。    </p></li><li><p>The SPI RAM can be accessed in multiple methods: by just having it available as an unmanaged memory region in the CPU’s memory map:<br>这种模式下，SPI RAM 将作为 CPU 内存映射中的一个不受管理的内存区域，即它不会被堆管理系统管理。在这种模式下，如果需要使用 SPI RAM，必须通过专门的 API 或库函数来访问它，而不能直接使用标准的内存分配函数。    </p></li><li><p>By integrating it in the heap as ‘special’ memory needing heap_caps_malloc to allocate:<br>这种模式下，SPI RAM 被集成到系统的堆内存中，但它被视为一种特殊的内存类型，需要使用 heap_caps_malloc() 函数来分配。这意味着可以使用标准的 malloc() 函数来分配内部 RAM，但是要分配 SPI RAM，需要使用 heap_caps_malloc() 函数，并指定相应的内存类型标志。    </p></li></ul></li><li><p>Enable SPI RAM ECC<br>访问 SPIRAM 时启用 MSPI 纠错码功能。如果启用，SPI RAM 总大小的 1/16 将保留用于纠错代码。</p></li></ul>]]></content>
+    
+    
+    <summary type="html">记录一下如何打开并使用ESP32的PSRAM，以及一些设置的注意事项</summary>
+    
+    
+    
+    <category term="学习记录" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    <category term="ESP32" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/ESP32/"/>
+    
+    
+    <category term="ESP32" scheme="http://yoursite.com/tags/ESP32/"/>
+    
+  </entry>
   
   <entry>
     <title>关于ESP32文件系统中中文路径下文件的处理</title>
@@ -117,11 +140,11 @@
     <category term="Unity" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/Unity/"/>
     
     
-    <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
-    
     <category term="惯性动补" scheme="http://yoursite.com/tags/%E6%83%AF%E6%80%A7%E5%8A%A8%E8%A1%A5/"/>
     
     <category term="姿态解算" scheme="http://yoursite.com/tags/%E5%A7%BF%E6%80%81%E8%A7%A3%E7%AE%97/"/>
+    
+    <category term="Unity" scheme="http://yoursite.com/tags/Unity/"/>
     
   </entry>
   
