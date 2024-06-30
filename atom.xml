@@ -37,9 +37,9 @@
     
     <category term="嵌入式开发" scheme="http://yoursite.com/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/"/>
     
-    <category term="ESP32" scheme="http://yoursite.com/tags/ESP32/"/>
-    
     <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="ESP32" scheme="http://yoursite.com/tags/ESP32/"/>
     
   </entry>
   
@@ -245,13 +245,13 @@
     
     <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
-    
     <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
     <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
     
     <category term="踩坑" scheme="http://yoursite.com/tags/%E8%B8%A9%E5%9D%91/"/>
+    
+    <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
     
     <category term="端口" scheme="http://yoursite.com/tags/%E7%AB%AF%E5%8F%A3/"/>
     
