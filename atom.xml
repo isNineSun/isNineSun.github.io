@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2024-05-21T17:18:06.344Z</updated>
+  <updated>2024-06-30T05:09:49.113Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ESPHexo--在你的ESP32上运行Hexo博客</title>
+    <link href="http://yoursite.com/2024/06/30/ESPHexo/"/>
+    <id>http://yoursite.com/2024/06/30/ESPHexo/</id>
+    <published>2024-06-30T03:45:04.000Z</published>
+    <updated>2024-06-30T05:09:49.113Z</updated>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>Supported Targets</th><th>ESP32</th><th>ESP32-C2</th><th>ESP32-C3</th><th>ESP32-C6</th><th>ESP32-H2</th><th>ESP32-S2</th><th>ESP32-S3</th></tr></thead></table><p align="center">  <img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/e057386c0df403c28fb037c34386544a.png" height=120></p><h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>本项目可以帮助你在你的ESP32设备上运行Hexo博客，搭建一个小型便携的、低功耗的、部署简单的博客服务器。设备可以自动DDNS，自动更新同步博客文件。<br>本项目对应的硬件项目为：<a href="https://oshwhub.com/isninesun/esphexo">立创开源链接</a>，可在该网站上获取推荐的硬件设计。</p><h1 id="2-特性"><a href="#2-特性" class="headerlink" title="2.特性"></a>2.特性</h1><ul><li>低功耗，使用esp32作为载体，功耗远远低于X86和绝大多数Linux平台。</li><li>部署简单，只需在配置文件中填写有限的几个的wifi、用户名等信息即可使用。</li><li>美观并且直观的Web配置界面，方便直接修改设备配置而无需经常手动修改SD卡中的配置文件。</li><li>支持公网DDNS，可以在外部远程访问你的Blog网站。</li><li>信息监视屏，具有一个小的信息监视屏，直观的获取Blog的运行状态。</li></ul><h1 id="3-使用前的准备"><a href="#3-使用前的准备" class="headerlink" title="3.使用前的准备"></a>3.使用前的准备</h1><p>在使用前，你或许需要做以下准备：    </p><ol><li><strong>ESP32设备</strong>，可以是开发板或者你自己设计的PCB，需要支持TF卡（4线SPI）。</li><li><strong>一张SD卡</strong>，推荐闪迪，可以自行搜索esp设备对tf卡的兼容性。</li><li>一个SSD1306显示屏（可选的）</li><li>一个已经可以<strong>正常运行的Hexo博客</strong>（支持Github Page或Gitee），需要拥有基本的如何部署Hexo博客的知识，本说明不包含Hexo博客的部署教程，请自行了解如何部署和生成Hexo网页。</li><li>如果你需要外网访问你的设备，请确保你的网络环境支持ipv4或ipv6任何一种公网，ipv6现在很容易获取，如果你不确定自己是否拥有ipv6，可以从这个网站测试：<a href="https://test-ipv6.com/">IPV6连接性测试</a>。</li></ol><h1 id="4-推荐前置知识学习"><a href="#4-推荐前置知识学习" class="headerlink" title="4.推荐前置知识学习"></a>4.推荐前置知识学习</h1><p>如果你对本篇文章在此之前的任何名词感到疑惑，或许可以从下面的链接中获取一些帮助：<br><a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a><br><a href="https://zhuanlan.zhihu.com/p/391202765">https://zhuanlan.zhihu.com/p/391202765</a><br><a href="https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/index.html">https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/index.html</a>    </p><h1 id="5-如何使用"><a href="#5-如何使用" class="headerlink" title="5.如何使用"></a>5.如何使用</h1><h2 id="🚀快速开始"><a href="#🚀快速开始" class="headerlink" title="🚀快速开始"></a>🚀快速开始</h2><ol><li><p>下载espressif官方烧录工具：<a href="https://www.espressif.com.cn/zh-hans/support/download/other-tools">flash_download_tool</a><br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/cb03ae14ec703d0c0ad7c6134b880564.png">    </p></li><li><p>打开工具，选择对应的芯片型号，点击OK进入烧录界面<br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/4eea5349f86e8d97c06a94ffb8a5ef1a.png">    </p></li><li><p>下载Release界面的<a href="https://github.com/isNineSun/ESPHexo/releases/download/ESPHexo_V0.01/target.bin">Esp32固件</a>，并使用烧录工具（ESP固件烧录工具）进行固件烧录，如果遇到点击Start之后等了一会而不开始下载的情况，可以给设备重启或重新上电。<br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/ed2ab93b9c121e27800154b9f84c8417.png">    </p></li><li><p>准备好配置文件，新建一个文本文件并命名为<code>bloxer_config.json</code>,按照以下模板进行编辑：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;wifi_ssid&quot;</span>:<span class="string">&quot;You WIFI SSID&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;wifi_password&quot;</span>:<span class="string">&quot;You WIFI Password&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ddns_domain&quot;</span>:<span class="string">&quot;Your Domain&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ddns_token&quot;</span>:<span class="string">&quot;Your token&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;web_username&quot;</span>:<span class="string">&quot;admin&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;web_password&quot;</span>:<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;repo_type&quot;</span>: <span class="string">&quot;You Repository Type&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;repo_owner&quot;</span>: <span class="string">&quot;You Repository Username&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;repo_name&quot;</span>: <span class="string">&quot;You Repository Name&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>wifi_ssid： wifi的名称</li><li>wifi_password： WiFi密码</li><li>ddns_domain：DDNS域名，<strong>对于快速启动来说，这一项可以不设置留空</strong></li><li>ddns_token：DDNS 服务token，<strong>对于快速启动来说，这一项可以不设置留空</strong></li><li>web_username：WebUI配置界面的用户名，<strong>对于快速启动来说，这一项可以不设置留空</strong></li><li>web_password：WebUI配置界面的密码，<strong>对于快速启动来说，这一项可以不设置留空</strong></li><li>repo_type: 保存博客文件的仓库的类型（现已支持Github和Gitee），<strong>对于快速启动来说，这一项可以不设置留空</strong></li><li>repo_owner：保存博客文件的仓库的拥有者的账户名（比如，部署在github上，那么就是你的github名），<strong>对于快速启动来说，这一项可以不设置留空</strong></li><li>repo_name：保存博客文件的仓库名，<strong>对于快速启动来说，这一项可以不设置留空</strong><br>对于快速启动来说，其配置文件可以类似这样：    <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;wifi_ssid&quot;</span>:<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;wifi_password&quot;</span>:<span class="string">&quot;1234567890&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ddns_domain&quot;</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ddns_token&quot;</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;web_username&quot;</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;web_password&quot;</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;repo_type&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;repo_owner&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;repo_name&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul></li><li><p>将你本地已经存在的Hexo博客文件夹中的整个Public文件夹与<code>bloxer_config.json</code>一起放入SD卡，文件结构如图，并将SD卡插入设备，设备开机并等待设备初始化完成，显示屏应该会亮起（如果装了显示屏的话）。<br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/af6507febec5c43988320a4935235951.png">    </p></li><li><p>在浏览器地址栏输入显示屏上的IP地址，如：192.168.31.177，如果一切正常。就可以直接本地访问设备中的Blog网站了。    </p></li></ol><h2 id="🤓进阶配置"><a href="#🤓进阶配置" class="headerlink" title="🤓进阶配置"></a>🤓进阶配置</h2><h3 id="关于DDNS配置"><a href="#关于DDNS配置" class="headerlink" title="关于DDNS配置"></a>关于DDNS配置</h3><p>首先，需要你的网络环境支持公网IP访问，IPV4(未进行测试)或者IPV6，然后在<a href="https://www.duckdns.org/domains">Duck DNS</a>上免费申请一个域名，登录选项有很多，直接Github即可，也可以选择自己喜欢的，申请过后，将你的域名和账户的token配置记录下来，在ESPHexo的配置文件中即可。<br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/5edce0.png">    </p><h3 id="关于显示屏幕"><a href="#关于显示屏幕" class="headerlink" title="关于显示屏幕"></a>关于显示屏幕</h3><p>显示屏幕是可选的，即使你的硬件上不支持显示屏，对程序运行也不会有影响，如果你想更干净地杜绝显示屏功能，可以关闭代码中的显示屏相关功能的编译宏控，其Makfile文件路径为<code>/根目录/CMakeLists.txt</code>：    </p><p><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/1fb5ab5da8a03928e6a642b9e0dcf4ce.png">    </p><h3 id="完整配置"><a href="#完整配置" class="headerlink" title="完整配置"></a>完整配置</h3><ol><li><p>完整配置中包括对Blog文件的<strong>自动拉取，DDNS与WebUI</strong>，首先需要准备好配置文件：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;wifi_ssid&quot;</span>:<span class="string">&quot;You WIFI SSID&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;wifi_password&quot;</span>:<span class="string">&quot;You WIFI Password&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ddns_domain&quot;</span>:<span class="string">&quot;Your Domain&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ddns_token&quot;</span>:<span class="string">&quot;Your token&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;web_username&quot;</span>:<span class="string">&quot;admin&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;web_password&quot;</span>:<span class="string">&quot;123456&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;repo_type&quot;</span>: <span class="string">&quot;You Repository Type&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;repo_owner&quot;</span>: <span class="string">&quot;You Repository Username&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;repo_name&quot;</span>: <span class="string">&quot;You Repository Name&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>将上文提到的DDNS的域名和账户的token，还有保存有你Hexo博客文件的Github仓库或者Gitee仓库的所有者，全部填写进去，关于web_username和web_password，则可以自己随便自定义，这个是你的WebUI配置界面的账户和密码。</p></li><li><p>配置完成后，可以在SD卡中只放置这一个配置文件，其他所有文件都不需要（包括上文快速启动中提到的Blog的Public文件夹）。    </p></li><li><p>将<code>bloxer_config.json</code>放入SD卡，并将SD卡插入设备，设备开机并等待设备初始化完成，显示屏应该会亮起（如果装了显示屏的话）。<br> <img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/8bb7c72db3df0f3907b5075f1bc293b4.png">    </p></li><li><p>在浏览器地址栏输入显示屏上的IP地址，如：192.168.31.177/Dashboard，可以直接进入设备的WebUI，输入用户名密码，进入配置界面。<br><strong>登录界面：</strong><br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/e872c4abeb29cd58dacd1a02fe279db8.png"><br><strong>配置界面：</strong><br><img src="https://raw.githubusercontent.com/isNineSun/img_repository/main/c6d7ca031298882a3bb9f6e132679a6b.png">    </p></li><li><p> 在此可以再检查一下之前配置文件做的配置，确认无误后，点击<code>Update Bolg Files form Server</code>按钮，设备会自动开始下载博客仓库中的文件，显示屏会展示下载进度，<strong>待下载完成后，在浏览器地址栏输入设备地址 192.168.31.177，即可打开博客网站</strong>。 </p></li><li><p>外网访问需要用到直接在Duck DNS上申请的域名，比如，你申请的域名是isbloxer，那么直接访问<code>http://isbloxer.duckdns.org/</code>，即可访问你的博客网站。</p></li></ol>]]></content>
+    
+    
+    <summary type="html">本项目可以帮助你在你的ESP32设备上运行Hexo博客，搭建一个小型便携的、低功耗的、部署简单的博客服务器</summary>
+    
+    
+    
+    <category term="设计开发" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="嵌入式" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
+    
+    
+    <category term="嵌入式开发" scheme="http://yoursite.com/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="ESP32" scheme="http://yoursite.com/tags/ESP32/"/>
+    
+    <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>【学习记录】ESP32模块如何使能PSRAM</title>
@@ -218,13 +245,13 @@
     
     <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
     
+    <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
     <category term="学习记录" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
     <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
     
     <category term="踩坑" scheme="http://yoursite.com/tags/%E8%B8%A9%E5%9D%91/"/>
-    
-    <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
     
     <category term="端口" scheme="http://yoursite.com/tags/%E7%AB%AF%E5%8F%A3/"/>
     
@@ -512,31 +539,6 @@
     <category term="记录" scheme="http://yoursite.com/tags/%E8%AE%B0%E5%BD%95/"/>
     
     <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的第一篇博客</title>
-    <link href="http://yoursite.com/2022/01/11/MyFirstBlog/"/>
-    <id>http://yoursite.com/2022/01/11/MyFirstBlog/</id>
-    <published>2022-01-11T09:58:04.000Z</published>
-    <updated>2023-11-01T17:50:22.745Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="嗨！"><a href="#嗨！" class="headerlink" title="嗨！"></a>嗨！</h2><p>幸会，这是我的第一篇博客，希望不会是最后一篇233，如果你对我感兴趣，可以看一看我下面的自述。</p><hr><h2 id="这个个人博客的目的"><a href="#这个个人博客的目的" class="headerlink" title="这个个人博客的目的"></a>这个个人博客的目的</h2><p>这个技术博客主要是为了能够更好的记录我在学习中会遇到的种种事情，可能是难题，可能是踩坑，可能是灵感，可能是新的技术，我的涉猎比较广，游戏、单片机、编程、绘画等等我都有兴趣，随着学的东西越来越多，我萌生出将自己所学记录下来的想法，一个个人博客想来是再好不过的方式了，我会尽量在知乎等大的平台上同步更新。<br>我在学习中也不止一次的被他人的技术博客所拯救，一个百思不得其解的问题可能在他人的技术博客中用一两句话就说明白了，颇有“听君一席话胜读十年书”的感觉，我希望我的技术博客也能够帮到每一个人！</p><hr><h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>以上，就结束了我简短的第一篇博客，希望在今后的日子里我能够先将自己的博客充实起来。<br><img src="https://s2.loli.net/2022/01/12/rGQZiH2Fal51BVq.png" alt="This is me" title="This is not me"></p>]]></content>
-    
-    
-    <summary type="html">幸会，这是我的第一篇博客，希望不会是最后一篇233，如果你对我感兴趣，可以看一看我下面的自述。</summary>
-    
-    
-    
-    <category term="生活记录" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-    <category term="碎碎念" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-    
-    <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-    <category term="HelloWorld" scheme="http://yoursite.com/tags/HelloWorld/"/>
     
   </entry>
   
